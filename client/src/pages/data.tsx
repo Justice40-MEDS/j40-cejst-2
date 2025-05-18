@@ -7,6 +7,7 @@ import InteractiveGraph from '../components/InteractiveGraph';
 import ObservableTest from '../components/ObservableTest';
 import IndicatorDemGraph from '../components/IndicatorDemGraph';
 
+// @ts-ignore
 import * as styles from './newStyles.module.scss';
 
 interface IDataPageProps {
@@ -27,7 +28,13 @@ const DataPage = ({location}: IDataPageProps) => {
   return (
     <Layout location={location} title={'Observable'}>
       <J40MainGridContainer fullWidth>
-        <div style={{maxWidth: '90%', margin: '0 auto', padding: '0 1rem'}}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 10px auto',
+            padding: '0 1rem',
+          }}
+        >
           <section className={'page-heading'}>
             <h1>Explore the Data</h1>
           </section>
@@ -39,6 +46,26 @@ const DataPage = ({location}: IDataPageProps) => {
               climate and economic justice.
             </p>
           </div>
+        </div>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth={true} greenBackground={true}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '1rem auto 1rem auto',
+            padding: '0 1rem',
+          }}
+        >
+          <p style={{fontSize: '2rem', fontWeight: '500'}}>Demographics</p>
+        </div>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth>
+        <div style={{maxWidth: '90%', margin: '0 auto', padding: '0 1rem'}}>
+          <h3 style={{marginBottom: '0.8rem'}}>
+            Distribution of Total Thresholds Exceeded by Racial/Ethnic Group
+          </h3>
           <Grid row gap={6}>
             {/* First column */}
             <Grid desktop={{col: 6}} col={12}>
@@ -48,9 +75,6 @@ const DataPage = ({location}: IDataPageProps) => {
                     'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/burd_dem_long.json'
                   }
                 ></ObservableTest>
-              </div>
-              <div id="chart-container-int">
-                <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
               </div>
             </Grid>
 
@@ -63,6 +87,24 @@ const DataPage = ({location}: IDataPageProps) => {
           </Grid>
         </div>
       </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth={true} greenBackground={true}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '1rem auto 1rem auto',
+            padding: '0 1rem',
+          }}
+        >
+          <p style={{fontSize: '2rem', fontWeight: '500'}}>
+            Hot Spots and Cold Spots
+          </p>
+        </div>
+      </J40MainGridContainer>
+
+      <div id="chart-container-int">
+        <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
+      </div>
     </Layout>
   );
 };

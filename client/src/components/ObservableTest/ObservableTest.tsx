@@ -138,12 +138,13 @@ const ObservableTest = ({url}: Props) => {
           legend: true,
           label: 'Race/Ethnicity',
           domain: racialOrderLegend,
+          // legendPosition: 'bottom',
         },
-        marginBottom: 45,
-        marginTop: 30,
+        marginBottom: 50,
+        marginTop: 40,
         style: {
           fontFamily: 'Lexend, sans-serif',
-          fontSize: '16px',
+          fontSize: '18px',
         },
       });
 
@@ -181,7 +182,7 @@ const ObservableTest = ({url}: Props) => {
       // Manually style legend because I couldn't get it to work inside observable
       const legendSpans = container?.querySelectorAll('span');
       legendSpans?.forEach((span) => {
-        span.style.fontSize = '14px';
+        span.style.fontSize = '16px';
         span.style.display = 'inline-flex';
         span.style.alignItems = 'center';
         span.style.marginRight = '1em';
