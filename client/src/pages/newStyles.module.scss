@@ -7,6 +7,13 @@
     font-family: 'Lexend', sans-serif;
 }
 
+.plotWrapperFacet {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    font-family: 'Lexend', sans-serif;
+}
+
 .plotPageWrapper {
     max-width: 90% !important;
     margin: 0 auto;
@@ -16,4 +23,10 @@
 .sectionHeaderGraph {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.greenContainer {
+    max-width: 90%;
+    margin: 1rem auto 1rem auto;
+    padding: 0 1rem;
 }

@@ -160,7 +160,7 @@ const InteractiveGraph = ({url}: Props) => {
       x: {
         domain: [0, 100],
         label: 'Percentile',
-        tickFormat: (d) => `${d}%`,
+        tickFormat: (d) => `${d}th`,
       },
       color: {scheme: 'PuRd'},
       style: {
@@ -297,7 +297,7 @@ const InteractiveGraph = ({url}: Props) => {
                 borderRadius: '8px',
               }}
             >
-              Please select a state to view the data.
+              Please select a state to view the data
             </div>
           )}
           <div ref={chartRef}></div>

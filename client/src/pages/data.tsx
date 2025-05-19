@@ -6,6 +6,8 @@ import Layout from '../components/layout';
 import InteractiveGraph from '../components/InteractiveGraph';
 import ObservableTest from '../components/ObservableTest';
 import IndicatorDemGraph from '../components/IndicatorDemGraph';
+import HotspotGraph from '../components/HotspotGraph';
+import IndHotspotGraph from '../components/IndHotspotGraph';
 
 // @ts-ignore
 import * as styles from './newStyles.module.scss';
@@ -50,19 +52,19 @@ const DataPage = ({location}: IDataPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer fullWidth={true} greenBackground={true}>
-        <div
-          style={{
-            maxWidth: '90%',
-            margin: '1rem auto 1rem auto',
-            padding: '0 1rem',
-          }}
-        >
+        <div className={styles.greenContainer}>
           <p style={{fontSize: '2rem', fontWeight: '500'}}>Demographics</p>
         </div>
       </J40MainGridContainer>
 
       <J40MainGridContainer fullWidth>
-        <div style={{maxWidth: '90%', margin: '0 auto', padding: '0 1rem'}}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
           <h3 style={{marginBottom: '0.8rem'}}>
             Distribution of Total Thresholds Exceeded by Racial/Ethnic Group
           </h3>
@@ -89,22 +91,72 @@ const DataPage = ({location}: IDataPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer fullWidth={true} greenBackground={true}>
-        <div
-          style={{
-            maxWidth: '90%',
-            margin: '1rem auto 1rem auto',
-            padding: '0 1rem',
-          }}
-        >
+        <div className={styles.greenContainer}>
           <p style={{fontSize: '2rem', fontWeight: '500'}}>
             Hot Spots and Cold Spots
           </p>
         </div>
       </J40MainGridContainer>
 
-      <div id="chart-container-int">
-        <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
-      </div>
+      <J40MainGridContainer fullWidth>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
+          <h3 style={{marginBottom: '0.8rem'}}>
+            Distribution of Hot Spots and Cold Spots Across Census Tracts
+          </h3>
+          <Grid row gap={6}>
+            {/* First column */}
+            <Grid desktop={{col: 6}} col={12}>
+              <div id="chart-container-3" className={styles.plotWrapper}>
+                <HotspotGraph
+                  url={
+                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/gi_total.json'
+                  }
+                ></HotspotGraph>
+              </div>
+            </Grid>
+
+            {/* Second Column */}
+            <Grid desktop={{col: 6}} col={12}>
+              <div id="chart-container-4" className={styles.plotWrapper}>
+                <IndHotspotGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/gi_total.json"></IndHotspotGraph>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth={true} greenBackground={true}>
+        <div className={styles.greenContainer}>
+          <p style={{fontSize: '2rem', fontWeight: '500'}}>
+            Explore the Data
+          </p>
+        </div>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
+          <p style={{marginBottom: '0.8rem'}}>
+            Use the dropdown menus below to explore the how burden and indicator
+            thresholds exceeded vary across state and county. The graph shows a
+            histogram of the distribution of percentile risk.
+          </p>
+          <div id="chart-container-int" className={styles.plotWrapper}>
+            <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
+          </div>
+        </div>
+      </J40MainGridContainer>
     </Layout>
   );
 };

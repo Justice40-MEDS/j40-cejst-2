@@ -6,14 +6,11 @@ interface Props {
   url: string;
 }
 
-const IndicatorDemGraph = ({url}: Props) => {
+const IndHotspotGraph = ({url}: Props) => {
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the data
-    // const url =
-    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json';
     console.log('Fetching data from:', url);
 
     fetch(url)
@@ -39,62 +36,25 @@ const IndicatorDemGraph = ({url}: Props) => {
         });
   }, []);
 
-  const racialOrder = [
-    'White (Non-Hispanic)',
-    'Black or African American',
-    'Hispanic or Latino',
-    'Other Race',
-    'Asian',
-    'Native Hawaiian and Pacific Islander',
-    'American Indian and Alaskan Native',
-  ];
+  const idLabel: { [key: string]: string } = {
+    0: 'Not Significant',
+    1: 'Hot Spot',
+    2: 'Cold Spot',
+  };
 
-  const racialOrderLegend = [
-    'American Indian and Alaskan Native',
-    'Native Hawaiian and Pacific Islander',
-    'Asian',
-    'Other Race',
-    'Hispanic or Latino',
-    'Black or African American',
-    'White (Non-Hispanic)',
-  ];
+  const idOrder = [0, 1, 2];
 
   // OG palette
   const colorPalette = [
-    '#741CD6',
-    '#972843',
-    '#6d8ef7',
-    '#1E6A9C',
-    '#DC267F',
-    '#9CBF5D',
-    '#FE6100',
+    '#FBF8F3', // NA
+    '#cf1717', // hot
+    '#1818ed', // cold
   ];
 
-  // Pastel version
-  // const colorPalette = [
-  //   '#B99CE9', // softer purple
-  //   '#D892A3', // muted rose
-  //   '#AFC6FB', // lighter blue
-  //   '#85B3D4', // soft steel blue
-  //   '#E59CBF', // pastel pink
-  //   '#C8DB9E', // muted lime green
-  //   '#FFB380', // soft orange
-  // ];
+  const filteredData = data.filter((d) => d.category === 'ind');
 
-  // In between palette
-  // const colorPalette = [
-  //   '#9B5EDB', // medium purple
-  //   '#B35C6E', // dusty rose
-  //   '#8DAAF9', // calmer blue
-  //   '#3F86B5', // softened navy
-  //   '#E05A9F', // muted magenta
-  //   '#B4D275', // soft olive-lime
-  //   '#FF9040', // tangerine
-  // ];
-
-  const sortedData = data.sort(
-      (a, b) =>
-        racialOrder.indexOf(a.racial_group) - racialOrder.indexOf(b.racial_group),
+  const sortedData = filteredData.sort(
+      (a, b) => idOrder.indexOf(a.ID) - idOrder.indexOf(b.ID),
   );
 
   useEffect(() => {
@@ -102,35 +62,42 @@ const IndicatorDemGraph = ({url}: Props) => {
       const chart = Plot.plot({
         marks: [
           Plot.barY(sortedData, {
-            x: 'total_criteria',
-            y: 'percentage',
-            fill: 'racial_group',
-            tip: {
-              format: {
-                racial_group: (d) => d.replace(' and ', ' and<br>'),
-                y: (d) => `${Math.round(d)}%`,
-              },
-            },
+            x: (d) => idLabel[d.ID],
+            y: 'num_tracts',
+            // fx: 'category',
+            fill: (d) => d.ID,
+            tip: true,
+            title: (d) => `${d.num_tracts} tracts`,
+            // tip: {
+            //   format: {
+            //     num_tracts: (n: number) => `${n} tracts`,
+            //   },
+            // },
+            // tip: {
+            //   format: {
+            //     num_tracts: (n) => `${n} tracts`,
+            //   },
+            // },
           }),
         ],
-        y: {axis: true, label: 'Percentage', tickFormat: (d) => `${d}%`},
-        x: {label: 'Indicator Thresholds Exceeded'},
+        y: {axis: true, label: 'Number of Census Tracts'},
+        x: {
+          label: 'Cluster Classification for Indicator Thresholds Exceeded',
+        },
         color: {
           range: colorPalette,
-          legend: true,
-          label: 'Race/Ethnicity',
-          domain: racialOrderLegend,
+          domain: idOrder,
         },
-        marginBottom: 50,
+        marginBottom: 60,
         marginTop: 40,
-        marginLeft: 60,
+        marginLeft: 80,
         style: {
           fontFamily: 'Lexend, sans-serif',
           fontSize: '18px',
         },
       });
 
-      const container = document.getElementById('chart-container-2');
+      const container = document.getElementById('chart-container-4');
       if (container) {
         container.innerHTML = ''; // Clear any previous chart
         container.appendChild(chart);
@@ -195,7 +162,7 @@ const IndicatorDemGraph = ({url}: Props) => {
     return <div>Loading Data...</div>;
   }
 
-  return <div id="chart-container-2" />;
+  return <div id="chart-container-4" />;
 };
 
-export default IndicatorDemGraph;
+export default IndHotspotGraph;

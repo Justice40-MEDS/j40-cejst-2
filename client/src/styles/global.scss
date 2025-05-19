@@ -48,6 +48,12 @@ $primary-color: #6d332e; // Used for header font color - selection color is #005
 $j40-blue-background-color: #f0f0ea; // Hex value of 'blue-cool-5'
 $disadvantaged-color-side-panel: #D47D76;
 
+// Add this to remove extra margin from obs plots
+figure {
+  margin: 0 !important;
+  // width: 100% !important;
+}
+
 // The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
 // Arguments to the mixins must be tokens from USWDS
 @mixin j40-element($font-size, $line-height, $font-weight, $margin-top, $margin-bottom: 0) {

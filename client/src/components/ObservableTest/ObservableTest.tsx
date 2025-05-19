@@ -131,7 +131,7 @@ const ObservableTest = ({url}: Props) => {
             },
           }),
         ],
-        y: {axis: true, label: 'Percentage'},
+        y: {axis: true, label: 'Percentage', tickFormat: (d) => `${d}%`},
         x: {label: 'Burden Thresholds Exceeded'},
         color: {
           range: colorPalette,
@@ -142,6 +142,7 @@ const ObservableTest = ({url}: Props) => {
         },
         marginBottom: 50,
         marginTop: 40,
+        marginLeft: 60,
         style: {
           fontFamily: 'Lexend, sans-serif',
           fontSize: '18px',
