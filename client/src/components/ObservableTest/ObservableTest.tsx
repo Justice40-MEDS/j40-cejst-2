@@ -140,7 +140,7 @@ const ObservableTest = ({url}: Props) => {
           domain: racialOrderLegend,
           // legendPosition: 'bottom',
         },
-        marginBottom: 50,
+        marginBottom: 60,
         marginTop: 40,
         marginLeft: 60,
         style: {

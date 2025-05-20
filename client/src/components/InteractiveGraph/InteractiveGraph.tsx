@@ -102,12 +102,12 @@ const InteractiveGraph = ({url}: Props) => {
     LPF_PFS: 'Lead paint',
     IS_PFS: 'Lack of greenspace',
     KP_PFS: 'Lack of indoor plumbing',
-    HRS_ET: 'Historic redlining',
+    // HRS_ET: 'Historic redlining',
     TSDF_PFS: 'Proximity to hazardous waste sites',
     NPL_PFS: 'Proximity to NPL sites',
     RMP_PFS: 'Proximity to RMP sites',
-    FUDS_ET: 'Former US Defense Site',
-    AML_ET: 'Abandoned mine present',
+    // FUDS_ET: 'Former US Defense Site',
+    // AML_ET: 'Abandoned mine present',
     WF_PFS: 'Wastewater discharge',
     UST_PFS: 'Leaky underground storage tanks',
     AF_PFS: 'Asthma among adults',
@@ -169,28 +169,9 @@ const InteractiveGraph = ({url}: Props) => {
       },
       marginBottom: 45,
       marginTop: 30,
-      marginLeft: 60,
-      // marks: [
-      //   Plot.rectY(bins, {
-      //     x1: (d) => d.x0,
-      //     x2: (d) => d.x1,
-      //     y: (d) => d.length,
-      //     fill: (d) => d.avgPercentile,
-      //     tip: true,
-      //     title: (d) =>
-      //       [
-      //         `Range: ${d.x0}–${d.x1}`,
-      //         `Count: ${d.length}`,
-      //         // `Avg Percentile: ${d.avgPercentile.toFixed(0)}%`,
-      //       ].join('\n'),
-      //   }),
-      //   Plot.ruleY([0]),
-      // ],
+      marginLeft: 50,
+      marginRight: 25,
       marks: [
-        // Plot.boxY(filteredData, {
-        //   x: 'indicator',
-        //   y: 'value',
-        // }),
         Plot.rectY(
             scaledData,
             Plot.binX(
@@ -221,7 +202,13 @@ const InteractiveGraph = ({url}: Props) => {
   return (
     <div>
       <div style={{margin: '1rem'}}>
-        <label style={{marginRight: '0.8rem', marginBottom: '0.8rem'}}>
+        <label
+          style={{
+            display: 'inline-block',
+            marginRight: '0.8rem',
+            marginBottom: '0.5rem',
+          }}
+        >
           State:
           <select
             value={selectedState}
@@ -251,7 +238,13 @@ const InteractiveGraph = ({url}: Props) => {
           </select>
         </label>
         <br></br>
-        <label style={{marginRight: '0.8rem', marginTop: '0.8rem'}}>
+        <label
+          style={{
+            display: 'inline-block',
+            marginRight: '0.8rem',
+            marginBottom: '1rem',
+          }}
+        >
           Burden:
           <select
             value={selectedBurden}

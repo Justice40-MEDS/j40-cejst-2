@@ -121,7 +121,7 @@ const IndicatorDemGraph = ({url}: Props) => {
           label: 'Race/Ethnicity',
           domain: racialOrderLegend,
         },
-        marginBottom: 50,
+        marginBottom: 60,
         marginTop: 40,
         marginLeft: 60,
         style: {
@@ -134,6 +134,10 @@ const IndicatorDemGraph = ({url}: Props) => {
       if (container) {
         container.innerHTML = ''; // Clear any previous chart
         container.appendChild(chart);
+        // Move the tooltip group to the end of the SVG so it always appears on top
+        const svg = container.querySelector('svg');
+        const tip = svg?.querySelector('g[aria-label="tip"]');
+        if (tip && svg) svg.appendChild(tip);
       }
 
       // Animation on load

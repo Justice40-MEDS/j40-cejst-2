@@ -46,7 +46,7 @@ const IndHotspotGraph = ({url}: Props) => {
 
   // OG palette
   const colorPalette = [
-    '#FBF8F3', // NA
+    '#dfdede', // NA
     '#cf1717', // hot
     '#1818ed', // cold
   ];
@@ -64,20 +64,9 @@ const IndHotspotGraph = ({url}: Props) => {
           Plot.barY(sortedData, {
             x: (d) => idLabel[d.ID],
             y: 'num_tracts',
-            // fx: 'category',
             fill: (d) => d.ID,
             tip: true,
             title: (d) => `${d.num_tracts} tracts`,
-            // tip: {
-            //   format: {
-            //     num_tracts: (n: number) => `${n} tracts`,
-            //   },
-            // },
-            // tip: {
-            //   format: {
-            //     num_tracts: (n) => `${n} tracts`,
-            //   },
-            // },
           }),
         ],
         y: {axis: true, label: 'Number of Census Tracts'},
