@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
+import IntGraphSidebar from '../IntGraphSidebar';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
+import * as Description from '../../data/copy/data';
+import * as styles from './InteractiveGraph.module.scss';
 
 interface Datum {
   state: string;
@@ -120,6 +123,36 @@ const InteractiveGraph = ({url}: Props) => {
     P100_PFS: '% below federal poverty line',
   };
 
+  const indicatorDefinitions: { [key: string]: string } = {
+    EALR_PFS: Description.EALR,
+    EBLR_PFS: Description.EBLR,
+    EPLR_PFS: Description.EPLR,
+    FLD_PFS: Description.FLD,
+    WFR_PFS: Description.WFR,
+    EBF_PFS: Description.EBF,
+    PM25F_PFS: Description.PM25F,
+    DSF_PFS: Description.DSF,
+    TF_PFS: Description.TF,
+    TD_PFS: Description.TD,
+    HBF_PFS: Description.HBF,
+    LPF_PFS: Description.LPF,
+    IS_PFS: Description.IS,
+    KP_PFS: Description.KP,
+    TSDF_PFS: Description.TSDF,
+    NPL_PFS: Description.NPL,
+    RMP_PFS: Description.RMP,
+    WF_PFS: Description.WF,
+    UST_PFS: Description.UST,
+    AF_PFS: Description.AF,
+    DF_PFS: Description.DF,
+    HDF_PFS: Description.HDF,
+    LLEF_PFS: Description.LLEF,
+    LMI_PFS: Description.LMI,
+    LIF_PFS: Description.LIF,
+    UF_PFS: Description.UF,
+    P100_PFS: Description.P100,
+  };
+
   // Update selectedCounty and selectedIndicator when dependencies change
   useEffect(() => {
     if (counties.length > 0) {
@@ -159,7 +192,7 @@ const InteractiveGraph = ({url}: Props) => {
       },
       x: {
         domain: [0, 100],
-        label: 'Percentile',
+        label: 'National Percentile',
         tickFormat: (d) => `${d}th`,
       },
       color: {scheme: 'PuRd'},
@@ -181,7 +214,7 @@ const InteractiveGraph = ({url}: Props) => {
         ),
         Plot.ruleY([0]),
       ],
-      width: 750,
+      width: 850,
       height: 500,
     });
 
@@ -200,8 +233,8 @@ const InteractiveGraph = ({url}: Props) => {
   }
 
   return (
-    <div>
-      <div style={{margin: '1rem'}}>
+    <div className={styles.intGraphFlexContainer}>
+      <div className={styles.graphContainer}>
         <label
           style={{
             display: 'inline-block',
@@ -209,7 +242,7 @@ const InteractiveGraph = ({url}: Props) => {
             marginBottom: '0.5rem',
           }}
         >
-          State:
+          State:{' '}
           <select
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
@@ -224,7 +257,7 @@ const InteractiveGraph = ({url}: Props) => {
         </label>
 
         <label>
-          County:
+          County:{' '}
           <select
             value={selectedCounty}
             onChange={(e) => setSelectedCounty(e.target.value)}
@@ -245,7 +278,7 @@ const InteractiveGraph = ({url}: Props) => {
             marginBottom: '1rem',
           }}
         >
-          Burden:
+          Burden:{' '}
           <select
             value={selectedBurden}
             onChange={(e) => setSelectedBurden(e.target.value)}
@@ -260,7 +293,7 @@ const InteractiveGraph = ({url}: Props) => {
         </label>
 
         <label>
-          Indicator:
+          Indicator:{' '}
           <select
             value={selectedIndicator}
             onChange={(e) => setSelectedIndicator(e.target.value)}
@@ -273,29 +306,22 @@ const InteractiveGraph = ({url}: Props) => {
             ))}
           </select>
         </label>
-        <div style={{position: 'relative', width: '750px', height: '500px'}}>
+        <div style={{position: 'relative'}}>
           {!selectedState && (
-            <div
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                fontSize: '1.2rem',
-                color: '#555',
-                textAlign: 'center',
-                fontWeight: 'bold',
-                background: 'rgba(255, 255, 255)',
-                padding: '1rem',
-                borderRadius: '8px',
-              }}
-            >
+            <div className={styles.selectStateNote}>
               Please select a state to view the data
             </div>
           )}
           <div ref={chartRef}></div>
         </div>
       </div>
+      {selectedIndicator && (
+        <IntGraphSidebar
+          indicator={selectedIndicator}
+          indicatorLabelMap={indicatorLabelMap}
+          indicatorDefinitions={indicatorDefinitions}
+        />
+      )}
     </div>
   );
 };

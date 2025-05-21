@@ -65,7 +65,7 @@ const DataPage = ({location}: IDataPageProps) => {
             padding: '0 1rem',
           }}
         >
-          <h3 style={{marginBottom: '0.8rem'}}>
+          <h3 className={styles.graphTitle}>
             Distribution of Total Thresholds Exceeded by Racial/Ethnic Group
           </h3>
           <Grid row gap={6}>
@@ -106,7 +106,7 @@ const DataPage = ({location}: IDataPageProps) => {
             padding: '0 1rem',
           }}
         >
-          <h3 style={{marginBottom: '0.8rem'}}>
+          <h3 className={styles.graphTitle}>
             Distribution of Hot Spots and Cold Spots Across Census Tracts
           </h3>
           <Grid row gap={6}>

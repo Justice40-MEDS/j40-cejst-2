@@ -2,7 +2,7 @@
 
 .plotWrapper{
     width: 100%;
-    max-width: 750px;
+    max-width: 90%;
     margin: 0 auto;
     font-family: 'Lexend', sans-serif;
 }
@@ -29,4 +29,10 @@
     max-width: 90%;
     margin: 1rem auto 1rem auto;
     padding: 0 1rem;
+}
+
+.graphTitle {
+    margin-bottom: 0.8rem;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
 }

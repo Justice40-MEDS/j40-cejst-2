@@ -5,6 +5,7 @@ declare namespace NewStylesModuleScss {
       plotPageWrapper: string;
       sectionHeaderGraph: string;
       greenContainer: string;
+      graphTitle:string;
     }
   }
 

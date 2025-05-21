@@ -1,20 +1,14 @@
-declare namespace DownloadButtonNamespace {
-    export interface IDownloadButtonScss {
-      downloadButtonLink: string;
-      buttonComponent: string;
-      buttonComponentYellow: string;
-      buttonComponentGray: string;
-      buttonContainer: string;
-      buttonText: string;
-      buttonImageBlue: string;
-      buttonImageYellow: string;
-      buttonImageGray: string;
+declare namespace InteractiveGraphNamespace {
+    export interface IInteractiveGraphScss {
+      intGraphFlexContainer: string;
+      graphContainer: string;
+      selectStateNote: string;
     }
   }
 
-declare const DownloadButtonScssModule: DownloadButtonNamespace.IDownloadButtonScss & {
+declare const InteractiveGraphScssModule: InteractiveGraphNamespace.IInteractiveGraphScss & {
     /** WARNING: Only available when "css-loader" is used without "style-loader" or "mini-css-extract-plugin" */
-    locals: DownloadButtonNamespace.IDownloadButtonScss;
+    locals: InteractiveGraphNamespace.IInteractiveGraphScss;
   };
 
-  export = DownloadButtonScssModule;
+  export = InteractiveGraphScssModule;

@@ -35,7 +35,8 @@ const AdditiveSidePanelInfo = ({
     <aside className={styles.sidePanelInfoContainer}>
       {/* Heading 1 */}
       <header tabIndex={0} className={styles.sidePanelInfoTitle}>
-        Total Thresholds Exceeded
+        {isBurdenLayer && 'Burden'}
+        {isIndicatorLayer && 'Indicator'} Thresholds Exceeded
       </header>
 
       {/* Paragraph 1 */}
