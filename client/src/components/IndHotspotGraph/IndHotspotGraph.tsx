@@ -37,7 +37,7 @@ const IndHotspotGraph = ({url}: Props) => {
   }, []);
 
   const idLabel: { [key: string]: string } = {
-    0: 'Not Significant',
+    0: 'No Cluster',
     1: 'Hot Spot',
     2: 'Cold Spot',
   };

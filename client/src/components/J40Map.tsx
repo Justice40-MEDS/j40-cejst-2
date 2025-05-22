@@ -32,6 +32,7 @@ import MapTractLayers from './MapTractLayers/MapTractLayers';
 // import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
 import TerritoryFocusControl from './territoryFocusControl';
 // import {getInteractiveLayerIds} from './Utils/getInteractiveLayerIds';
+import Colorbar from './Colorbar/Colorbar';
 
 // Styles and constants
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -353,90 +354,99 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid desktop={{col: 9}} className={styles.j40Map}>
-        {/**
-         * Note:
-         * The MapSearch component is no longer used in this location. It has been moved inside the
-         * <ReactMapGL> component itself.
-         *
-         * It was originally wrapped in a div in order to allow this feature
-         * to be behind a feature flag. This was causing a bug for MapSearch to render
-         * correctly in a production build. Leaving this comment here in case future flags are
-         * needed in this component.
-         *
-         * When the MapSearch component is placed behind a feature flag without a div wrapping
-         * MapSearch, the production build will inject CSS due to the null in the false conditional
-         * case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
-         * be tested with a production build via:
-         *   - npm run clean && npm run build && npm run serve
-         *
-         * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
-         *
-         * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
-         */}
-
-        {/**
-         * The ReactMapGL component's props are grouped by the API's documentation. The component also has
-         * some children.
-         */}
-        <ReactMapGL
-          // ****** Initialization props: ******
-          // access token is j40StylesReadToken
-          mapboxApiAccessToken={
-            process.env.MAPBOX_STYLES_READ_TOKEN ?
-              process.env.MAPBOX_STYLES_READ_TOKEN :
-              ''
-          }
-          // ****** Map state props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
-          {...viewport}
-          mapStyle={
-            process.env.MAPBOX_STYLES_READ_TOKEN ?
-              'mapbox://styles/justice40/cl9g30qh7000p15l9cp1ftw16' :
-              'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
-          }
-          width="100%"
-          // Ajusting this height with a conditional statement will not render the map on staging.
-          // The reason for this issue is unknown. Consider styling the parent container via SASS.
-          height="100%"
-          mapOptions={{hash: true}}
-          // ****** Interaction option props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
-          maxZoom={constants.GLOBAL_MAX_ZOOM}
-          minZoom={constants.GLOBAL_MIN_ZOOM}
-          dragRotate={false}
-          touchRotate={false}
-          // eslint-disable-next-line max-len
-          // interactiveLayerIds={[
-          //   constants.HIGH_ZOOM_LAYER_ID,
-          //   constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
-          // ]}
-          interactiveLayerIds={interactiveLayerIds}
-          // ****** Callback props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
-          onViewportChange={setViewport}
-          onClick={onClick}
-          onLoad={onLoad}
-          onTransitionStart={onTransitionStart}
-          onTransitionEnd={onTransitionEnd}
-          ref={mapRef}
-          data-cy={'reactMapGL'}
+        <div
+          style={{
+            position: 'relative',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
-          {
-            /* Tribal layer is baked into Mapbox source,
-             * only render here if we're not using that
-             **/
-            // process.env.MAPBOX_STYLES_READ_TOKEN || <MapTribalLayer />
-          }
+          <div style={{flex: 1, minHeight: 0}}>
+            {/**
+             * Note:
+             * The MapSearch component is no longer used in this location. It has been moved inside the
+             * <ReactMapGL> component itself.
+             *
+             * It was originally wrapped in a div in order to allow this feature
+             * to be behind a feature flag. This was causing a bug for MapSearch to render
+             * correctly in a production build. Leaving this comment here in case future flags are
+             * needed in this component.
+             *
+             * When the MapSearch component is placed behind a feature flag without a div wrapping
+             * MapSearch, the production build will inject CSS due to the null in the false conditional
+             * case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
+             * be tested with a production build via:
+             *   - npm run clean && npm run build && npm run serve
+             *
+             * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+             *
+             * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
+             */}
 
-          <MapTractLayers
-            selectedFeatureId={selectedFeature?.id || ''} // Pass the selected feature ID
-            selectedFeature={selectedFeature}
-            visibleLayer={visibleLayer}
-            setVisibleLayer={setVisibleLayer}
-            setInteractiveLayerIds={setInteractiveLayerIds}
-          />
+            {/**
+             * The ReactMapGL component's props are grouped by the API's documentation. The component also has
+             * some children.
+             */}
+            <ReactMapGL
+              // ****** Initialization props: ******
+              // access token is j40StylesReadToken
+              mapboxApiAccessToken={
+                process.env.MAPBOX_STYLES_READ_TOKEN ?
+                  process.env.MAPBOX_STYLES_READ_TOKEN :
+                  ''
+              }
+              // ****** Map state props: ******
+              // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
+              {...viewport}
+              mapStyle={
+                process.env.MAPBOX_STYLES_READ_TOKEN ?
+                  'mapbox://styles/justice40/cl9g30qh7000p15l9cp1ftw16' :
+                  'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
+              }
+              width="100%"
+              // Ajusting this height with a conditional statement will not render the map on staging.
+              // The reason for this issue is unknown. Consider styling the parent container via SASS.
+              height="100%"
+              mapOptions={{hash: true}}
+              // ****** Interaction option props: ******
+              // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
+              maxZoom={constants.GLOBAL_MAX_ZOOM}
+              minZoom={constants.GLOBAL_MIN_ZOOM}
+              dragRotate={false}
+              touchRotate={false}
+              // eslint-disable-next-line max-len
+              // interactiveLayerIds={[
+              //   constants.HIGH_ZOOM_LAYER_ID,
+              //   constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+              // ]}
+              interactiveLayerIds={interactiveLayerIds}
+              // ****** Callback props: ******
+              // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
+              onViewportChange={setViewport}
+              onClick={onClick}
+              onLoad={onLoad}
+              onTransitionStart={onTransitionStart}
+              onTransitionEnd={onTransitionEnd}
+              ref={mapRef}
+              data-cy={'reactMapGL'}
+            >
+              {
+                /* Tribal layer is baked into Mapbox source,
+                 * only render here if we're not using that
+                 **/
+                // process.env.MAPBOX_STYLES_READ_TOKEN || <MapTribalLayer />
+              }
 
-          {/* <MapTractLayers
+              <MapTractLayers
+                selectedFeatureId={selectedFeature?.id || ''} // Pass the selected feature ID
+                selectedFeature={selectedFeature}
+                visibleLayer={visibleLayer}
+                setVisibleLayer={setVisibleLayer}
+                setInteractiveLayerIds={setInteractiveLayerIds}
+              />
+
+              {/* <MapTractLayers
             visibleLayer={visibleLayer}
             setVisibleLayer={setVisibleLayer}
             setInteractiveLayerIds={setInteractiveLayerIds}
@@ -446,81 +456,84 @@ const J40Map = ({location}: IJ40Interface) => {
             setVisibleLayers={(layers) => setVisibleLayer(layers[0])} // Adjust as needed
           /> */}
 
-          {/* This is the first overlayed row on the map: Search and Geolocation */}
-          <div className={styles.mapHeaderRow}>
-            <MapSearch goToPlace={goToPlace} />
+              {/* This is the first overlayed row on the map: Search and Geolocation */}
+              <div className={styles.mapHeaderRow}>
+                <MapSearch goToPlace={goToPlace} />
 
-            {/* Geolocate Icon */}
-            <div className={styles.geolocateBox}>
-              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG - 1 && (
-                <div
-                  className={
-                    geolocationInProgress && !isGeolocateLocked ?
-                      styles.geolocateMessage :
-                      styles.geolocateMessageHide
-                  }
-                >
-                  {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
+                {/* Geolocate Icon */}
+                <div className={styles.geolocateBox}>
+                  <GeolocateControl
+                    positionOptions={{enableHighAccuracy: true}}
+                    onGeolocate={onGeolocate}
+                    onClick={onClickGeolocate}
+                    trackUserLocation={
+                      windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG
+                    }
+                    showUserHeading={
+                      windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG
+                    }
+                    // Copolit said we should remove this entirely because it's not valid
+                    disabledLabel={intl.formatMessage(
+                        EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED,
+                    )}
+                  />
+                  {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG - 1 && (
+                    <div
+                      className={
+                        geolocationInProgress && !isGeolocateLocked ?
+                          styles.geolocateMessage :
+                          styles.geolocateMessageHide
+                      }
+                    >
+                      {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
+                    </div>
+                  )}
                 </div>
-              )}
-              <GeolocateControl
-                positionOptions={{enableHighAccuracy: true}}
-                onGeolocate={onGeolocate}
-                onClick={onClickGeolocate}
-                trackUserLocation={
-                  windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG
-                }
-                showUserHeading={
-                  windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG
-                }
-                // Copolit said we should remove this entirely because it's not valid
-                disabledLabel={intl.formatMessage(
-                    EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED,
-                )}
-              />
-            </div>
-          </div>
+              </div>
 
-          {/* This is the second row overlayed on the map, it will add the navigation controls
+              {/* This is the second row overlayed on the map, it will add the navigation controls
           of the zoom in and zoom out buttons */}
-          {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
-            <NavigationControl
-              showCompass={false}
-              className={styles.navigationControl}
-            />
-          )}
+              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+                <NavigationControl
+                  showCompass={false}
+                  className={styles.navigationControl}
+                />
+              )}
 
-          {/* This is the third row overlayed on the map, it will show shortcut buttons to
+              {/* This is the third row overlayed on the map, it will show shortcut buttons to
           pan/zoom to US territories */}
-          {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
-            <TerritoryFocusControl onClick={onClick} />
-          )}
+              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+                <TerritoryFocusControl onClick={onClick} />
+              )}
 
-          {/* Enable fullscreen pop-up behind a feature flag */}
-          {'fs' in flags && detailViewData && !transitionInProgress && (
-            <Popup
-              className={styles.j40Popup}
-              tipSize={5}
-              anchor="top"
-              longitude={detailViewData.longitude!}
-              latitude={detailViewData.latitude!}
-              closeOnClick={true}
-              onClose={setDetailViewData}
-              captureScroll={true}
-            >
-              <AreaDetail
-                properties={detailViewData.properties}
-                visibleLayer={visibleLayer}
-                hash={zoomLatLngHash}
-              />
-            </Popup>
-          )}
-          {'fs' in flags ? (
-            <FullscreenControl className={styles.fullscreenControl} />
-          ) : (
-            ''
-          )}
-        </ReactMapGL>
+              {/* Enable fullscreen pop-up behind a feature flag */}
+              {'fs' in flags && detailViewData && !transitionInProgress && (
+                <Popup
+                  className={styles.j40Popup}
+                  tipSize={5}
+                  anchor="top"
+                  longitude={detailViewData.longitude!}
+                  latitude={detailViewData.latitude!}
+                  closeOnClick={true}
+                  onClose={setDetailViewData}
+                  captureScroll={true}
+                >
+                  <AreaDetail
+                    properties={detailViewData.properties}
+                    visibleLayer={visibleLayer}
+                    hash={zoomLatLngHash}
+                  />
+                </Popup>
+              )}
+              {'fs' in flags ? (
+                <FullscreenControl className={styles.fullscreenControl} />
+              ) : (
+                ''
+              )}
+            </ReactMapGL>
+          </div>
+          <Colorbar visibleLayer={visibleLayer} />
+        </div>
       </Grid>
 
       <Grid desktop={{col: 3}}>

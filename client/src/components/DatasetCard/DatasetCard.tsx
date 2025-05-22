@@ -7,7 +7,7 @@ import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 import * as styles from './datasetCard.module.scss';
 
 interface IDatasetCardProps {
-  datasetCardProps: METHODOLOGY_COPY.IIndicators
+  datasetCardProps: METHODOLOGY_COPY.IIndicators;
 }
 
 /**
@@ -24,11 +24,13 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
     <div className={styles.datasetCard} id={datasetCardProps.domID}>
       {/* Dataset header */}
       <div className={datasetCardProps.isNew ? styles.datasetCardHeader : ''}>
-        {datasetCardProps.isNew &&
+        {datasetCardProps.isNew && (
           <div className={styles.tagContainer}>
-            <Tag className={styles.newTag}>{intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.NEW)}</Tag>
+            <Tag className={styles.newTag}>
+              {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.NEW)}
+            </Tag>
           </div>
-        }
+        )}
         <h3 className={styles.datasetCardIndicator}>
           {datasetCardProps.indicator}
         </h3>
@@ -40,12 +42,13 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
       </div>
 
       {/* Dataset note */}
-      {(datasetCardProps.note && !isNoteAtEnd) && <div className={styles.datasetCardDescription}>
-        <p>{datasetCardProps.note}</p>
-      </div>}
+      {datasetCardProps.note && !isNoteAtEnd && (
+        <div className={styles.datasetCardDescription}>
+          <p>{datasetCardProps.note}</p>
+        </div>
+      )}
 
       <ul className={styles.datasetCardList}>
-
         {/* Dataset Used in */}
         {datasetCardProps.usedIn !== METHODOLOGY_COPY.CATEGORIES.OMIT && (
           <li className={styles.datasetCardListItem}>
@@ -59,46 +62,52 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
         {/* Dataset Responsible Party */}
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
-            {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.RESP_PARTY)}
+            {intl.formatMessage(
+                METHODOLOGY_COPY.DATASET_CARD_LABELS.RESP_PARTY,
+            )}
           </span>
           {datasetCardProps.responsibleParty}
         </li>
-
 
         {datasetCardProps.sources.map((dataSource, index) => (
           <React.Fragment key={index}>
             {/* Dataset Source */}
             <li className={styles.datasetCardListItemSource}>
               <span className={styles.datasetCardLabels}>
-                {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.SOURCE)}
+                {intl.formatMessage(
+                    METHODOLOGY_COPY.DATASET_CARD_LABELS.SOURCE,
+                )}
               </span>
               {dataSource.source}
-              {dataSource.isNew && (<>
+              {/* {dataSource.isNew && (<>
                 &ensp;
                 <Tag className={styles.newTag}>{intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.NEW)}</Tag>
               </>)}
               {dataSource.isUpdated && (<>
                 &ensp;
                 <Tag className={styles.newTag}>{intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.UPDATED)}</Tag>
-              </>)}
+              </>)} */}
             </li>
 
             {/* Dataset Available for */}
             <li className={styles.datasetCardListItem}>
               <span className={styles.datasetCardLabels}>
-                {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.AVAILABLE_FOR)}
+                {intl.formatMessage(
+                    METHODOLOGY_COPY.DATASET_CARD_LABELS.AVAILABLE_FOR,
+                )}
               </span>
               {intl.formatMessage(dataSource.availableFor)}
             </li>
           </React.Fragment>
         ))}
-
       </ul>
 
       {/* Dataset note */}
-      {(datasetCardProps.note && isNoteAtEnd) && <div className={styles.datasetCardDescription}>
-        <p>{datasetCardProps.note}</p>
-      </div>}
+      {datasetCardProps.note && isNoteAtEnd && (
+        <div className={styles.datasetCardDescription}>
+          <p>{datasetCardProps.note}</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -9,16 +9,24 @@
   }
 
   .mapHeaderRow{
-    @include u-display("flex");
-    @include u-padding-left(1.5);
+    // @include u-display("flex");
+    // @include u-padding-left(1.5);
+    // To fix the geolocate at small sizes
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 
     @include at-media-max("mobile-lg") {
-      flex-direction: column;
+      // flex-direction: column;
 
       @include u-padding-right(1.5);
 
       .geolocateBox {
-        align-self: flex-end;
+        // align-self: flex-end;
+        flex: 0 0 auto; // Prevents shrinking/growing, stays its natural width
+        margin-left: 1rem; 
       }
 
       .geolocateBox > div {
@@ -29,6 +37,7 @@
 
     .geolocateBox {
       margin-top: 6px;
+      flex: 0 0 auto;
       @include u-margin-left(1);
 
       .geolocateMessage {

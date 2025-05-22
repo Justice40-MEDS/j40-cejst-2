@@ -43,9 +43,10 @@ const DataPage = ({location}: IDataPageProps) => {
           <div>
             <p>
               This page houses dynamic and interactive data visualizations of
-              the data from the map. With over 73,000 census tracts and 31
-              unique indicators, the CEJST+ tool is a hub of data representing
-              climate and economic justice.
+              the data from the map. With over{' '}
+              <strong>73,000 census tracts</strong> and{' '}
+              <strong>31 unique indicators</strong>, the CEJST+ tool is a hub of
+              data representing climate and economic justice.
             </p>
           </div>
         </div>
@@ -90,6 +91,31 @@ const DataPage = ({location}: IDataPageProps) => {
         </div>
       </J40MainGridContainer>
 
+      {/* Insights and analyses demographics */}
+      <J40MainGridContainer fullWidth={true}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
+          <h4>Insights and Analyses</h4>
+          <p>
+            These bar charts show the distribution of racial/ethnic groups
+            across the the number of burden or indicator thresholds exceeded.
+            One key takeaway is that as exceeded thresholds increase, the
+            proportion of people that identify as{' '}
+            <span style={{color: '#9BBE5E'}}>Black or African American</span>{' '}
+            also increases. Similarly, the proportion of people that identify as{' '}
+            <span style={{color: '#FE6100'}}>white</span> decreases as the
+            thresholds increase. It is important to note that these numbers are
+            percentages, meaning it only represents the proportional breakdown
+            across each threshold value.{' '}
+          </p>
+        </div>
+      </J40MainGridContainer>
+
       <J40MainGridContainer fullWidth={true} greenBackground={true}>
         <div className={styles.greenContainer}>
           <p style={{fontSize: '2rem', fontWeight: '500'}}>
@@ -131,6 +157,29 @@ const DataPage = ({location}: IDataPageProps) => {
         </div>
       </J40MainGridContainer>
 
+      {/* Insights hotspots */}
+      <J40MainGridContainer fullWidth={true}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
+          <h4>Insights and Analyses</h4>
+          <p>
+            These bar charts show the distribution of cluster categories across
+            all U.S. census tracts. About half of all census tracts have no
+            cluster classification. Approximately 26,000 census tracts are
+            identified as <span style={{color: '#1818ED'}}>cold spots</span>{' '}
+            and 10,000 are identified as{' '}
+            <span style={{color: '#CF1818'}}>hot spots</span>. Hot spots and
+            cold spots at both the 95% and 99% significance level are included
+            in this visualization.{' '}
+          </p>
+        </div>
+      </J40MainGridContainer>
+
       <J40MainGridContainer fullWidth={true} greenBackground={true}>
         <div className={styles.greenContainer}>
           <p style={{fontSize: '2rem', fontWeight: '500'}}>
@@ -149,8 +198,8 @@ const DataPage = ({location}: IDataPageProps) => {
         >
           <p style={{marginBottom: '0.8rem'}}>
             Use the dropdown menus below to explore the how burden and indicator
-            thresholds exceeded vary across state and county. The graph shows a
-            histogram of the distribution of percentile risk.
+            thresholds exceeded vary across state and county. The graph shows
+            the distribution of percentile risk for the selected threshold.
           </p>
           <div id="chart-container-int" className={styles.plotWrapper}>
             <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
