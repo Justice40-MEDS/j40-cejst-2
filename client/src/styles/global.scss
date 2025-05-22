@@ -113,6 +113,9 @@ p.flush {
   @include j40-element('lg', 2, 'bold', 0);
 }
 
+#main-content .page-heading {
+  align-items: flex-start !important;
+}
 
 /*
 ******************************

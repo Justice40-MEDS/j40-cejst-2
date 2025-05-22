@@ -1,4 +1,4 @@
-import {NavList} from '@trussworks/react-uswds';
+import {NavList, Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 import React from 'react';
 
@@ -9,6 +9,7 @@ import LinkTypeWrapper from '../LinkTypeWrapper';
 import {GITHUB_LINK, GITHUB_LINK_ES} from '../../constants';
 // import * as ABOUT_COPY from '../../data/copy/about';
 import * as COMMON_COPY from '../../data/copy/common';
+// @ts-ignore
 import brenleafart from '../../images/bren2.svg';
 
 const J40Footer = () => {
@@ -50,9 +51,9 @@ const J40Footer = () => {
 
   // Logo image styles
   const logoImgStyle = {
-    marginRight: '1rem',
-    height: '80px',
-    width: 'auto',
+    // marginRight: '1rem',
+    minWidth: '40px',
+    maxWidt: '50px',
   };
 
   // Title text styles
@@ -70,13 +71,18 @@ const J40Footer = () => {
     <footer className={'j40-footer'} style={footerStyle}>
       {/* Custom logo section with image left of text */}
       <div className="usa-footer__secondary-section" style={logoSectionStyle}>
-        <a href="https://bren.ucsb.edu/" target="_blank" rel="noreferrer">
-          <img
-            style={logoImgStyle}
-            src={brenleafart}
-            alt={intl.formatMessage(COMMON_COPY.FOOTER.LOGO_ALT)}
-          />
-        </a>
+        <Grid
+          col={1}
+          style={{minWidth: '50px', maxWidth: '75px', marginRight: '0.4rem'}}
+        >
+          <a href="https://bren.ucsb.edu/" target="_blank" rel="noreferrer">
+            <img
+              style={logoImgStyle}
+              src={brenleafart}
+              alt={intl.formatMessage(COMMON_COPY.FOOTER.LOGO_ALT)}
+            />
+          </a>
+        </Grid>
         <div className={'j40-footer-ceq-font'} style={titleStyle}>
           {intl.formatMessage(COMMON_COPY.FOOTER.TITLE)}
         </div>
