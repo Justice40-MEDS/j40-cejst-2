@@ -42,7 +42,7 @@ const AdditiveSidePanelInfo = ({
       {/* Paragraph 1 */}
       <p tabIndex={0}>
         This layer explores total {isBurdenLayer && 'burdens'}
-        {isIndicatorLayer && 'indicators'} in a census tract. A count of the
+        {isIndicatorLayer && 'indicators'} in a census tract. The number of
         thresholds exceeded can be found by selecting a specific census tract.
       </p>
 

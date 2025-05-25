@@ -8,6 +8,7 @@ import ObservableTest from '../components/ObservableTest';
 import IndicatorDemGraph from '../components/IndicatorDemGraph';
 import HotspotGraph from '../components/HotspotGraph';
 import IndHotspotGraph from '../components/IndHotspotGraph';
+import HotspotDemGraph from '../components/HotspotDemGraph';
 
 // @ts-ignore
 import * as styles from './newStyles.module.scss';
@@ -79,12 +80,30 @@ const DataPage = ({location}: IDataPageProps) => {
                   }
                 ></ObservableTest>
               </div>
+              <div id="chart-container-6" className={styles.plotWrapper}>
+                <HotspotDemGraph
+                  url={
+                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/cluster_dem_long_burd.json'
+                  }
+                  threshold="burden"
+                  chartContainer="chart-container-6"
+                ></HotspotDemGraph>
+              </div>
             </Grid>
 
             {/* Second Column */}
             <Grid desktop={{col: 6}} col={12}>
               <div id="chart-container-2" className={styles.plotWrapper}>
                 <IndicatorDemGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json"></IndicatorDemGraph>
+              </div>
+              <div id="chart-container-7" className={styles.plotWrapper}>
+                <HotspotDemGraph
+                  url={
+                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/cluster_dem_long_ind.json'
+                  }
+                  threshold="indicator"
+                  chartContainer="chart-container-7"
+                ></HotspotDemGraph>
               </div>
             </Grid>
           </Grid>

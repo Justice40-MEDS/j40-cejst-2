@@ -6,22 +6,22 @@ import {
   NavDropDownButton,
   NavMenuButton,
   PrimaryNav,
-} from "@trussworks/react-uswds";
-import { Link, useIntl } from "gatsby-plugin-intl";
-import React, { useEffect, useState } from "react";
-import { useWindowSize } from "react-use";
+} from '@trussworks/react-uswds';
+import {Link, useIntl} from 'gatsby-plugin-intl';
+import React, {useEffect, useState} from 'react';
+import {useWindowSize} from 'react-use';
 // import GovernmentBanner from '../GovernmentBanner';
-import J40MainGridContainer from "../J40MainGridContainer";
-import Language from "../Language";
+import J40MainGridContainer from '../J40MainGridContainer';
+import Language from '../Language';
 
 // @ts-ignore
-import { PAGES_ENDPOINTS, USWDS_BREAKPOINTS } from "../../data/constants";
-import * as COMMON_COPY from "../../data/copy/common";
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../../data/constants';
+import * as COMMON_COPY from '../../data/copy/common';
 
 // @ts-ignore
-import siteLogo from "../../images/circle_logo.svg";
+import siteLogo from '../../images/circle_logo.svg';
 // import UpdateBanner from '../UpdateBanner';
-import * as styles from "./J40Header.module.scss";
+import * as styles from './J40Header.module.scss';
 
 interface IJ40Header {
   location: Location;
@@ -38,11 +38,11 @@ interface IJ40Header {
  * @param {Location} location
  * @return {JSX.Element}
  */
-const J40Header = ({ location }: IJ40Header) => {
+const J40Header = ({location}: IJ40Header) => {
   const intl = useIntl();
 
   // grab last segment of location pathname
-  const [lastSegmentLocation] = location.pathname.split("/").slice(-1);
+  const [lastSegmentLocation] = location.pathname.split('/').slice(-1);
 
   // Logo text
   const logoLine1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
@@ -72,7 +72,7 @@ const J40Header = ({ location }: IJ40Header) => {
    * The useWindowSize provides the device width and the useEffect allows the side effect (opening/closing
    * nav links) to occur anytime the device width changes.
    */
-  const { width } = useWindowSize();
+  const {width} = useWindowSize();
   useEffect(() => {
     if (width < USWDS_BREAKPOINTS.DESKTOP) {
       setIsOpen([true, true]);
@@ -151,33 +151,33 @@ const J40Header = ({ location }: IJ40Header) => {
   const aboutPageSubNavLinks = [
     <Link
       to={PAGES_ENDPOINTS.ABOUT}
-      key={"about"}
+      key={'about'}
       activeClassName="usa-current"
-      data-cy={"nav-link-about"}
+      data-cy={'nav-link-about'}
     >
       About
     </Link>,
     <Link
       to={PAGES_ENDPOINTS.DOWNLOADS}
-      key={"downloads"}
+      key={'downloads'}
       activeClassName="usa-current"
-      data-cy={"nav-link-downloads"}
+      data-cy={'nav-link-downloads'}
     >
       User Guide
     </Link>,
     <Link
       to={PAGES_ENDPOINTS.METHODOLOGY}
-      key={"methodology"}
+      key={'methodology'}
       activeClassName="usa-current"
-      data-cy={"nav-link-methodology"}
+      data-cy={'nav-link-methodology'}
     >
       Methodology & Data
     </Link>,
     <Link
       to={PAGES_ENDPOINTS.CONTACT}
-      key={"contact"}
+      key={'contact'}
       activeClassName="usa-current"
-      data-cy={"nav-link-contact"}
+      data-cy={'nav-link-contact'}
     >
       Contact & Acknowledgements
     </Link>,
@@ -219,9 +219,9 @@ const J40Header = ({ location }: IJ40Header) => {
       <NavDropDownButton
         className={
           lastSegmentLocation === PAGES_ENDPOINTS.ABOUT.slice(1) ||
-          lastSegmentLocation === PAGES_ENDPOINTS.FAQS.slice(1)
-            ? "usa-current"
-            : ""
+          lastSegmentLocation === PAGES_ENDPOINTS.FAQS.slice(1) ?
+            'usa-current' :
+            ''
         }
         key="aboutDropDown"
         label="Information"
@@ -229,7 +229,7 @@ const J40Header = ({ location }: IJ40Header) => {
         menuId="aboutMenu"
         isOpen={isOpen[1]}
         onToggle={(): void => onToggle(1)}
-        data-cy={"nav-dropdown-about"}
+        data-cy={'nav-dropdown-about'}
       ></NavDropDownButton>
       <Menu
         id="aboutMenu"
@@ -245,17 +245,17 @@ const J40Header = ({ location }: IJ40Header) => {
   const navLinks = [
     <Link
       to={PAGES_ENDPOINTS.EXPLORE}
-      key={"explore-map"}
+      key={'explore-map'}
       activeClassName="usa-current"
-      data-cy={"nav-link-explore-the-map"}
+      data-cy={'nav-link-explore-the-map'}
     >
       Explore the Map
     </Link>,
     <Link
       to={PAGES_ENDPOINTS.DATA}
-      key={"explore-data"}
+      key={'explore-data'}
       activeClassName="usa-current"
-      data-cy={"nav-link-explore-the-data"}
+      data-cy={'nav-link-explore-the-data'}
     >
       Explore the Data
     </Link>,
@@ -269,27 +269,27 @@ const J40Header = ({ location }: IJ40Header) => {
     // >
     //   {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
     // </Link>,
-    <div key={"language"}>
+    <div key={'language'}>
       <Language isDesktop={false} />
     </div>,
   ];
 
   return (
-    <Header basic={true} role={"banner"}>
+    <Header basic={true} role={'banner'}>
       {/* Banners */}
       {/* <GovernmentBanner />
       <UpdateBanner/> */}
 
       {/* Logo and Navigation */}
       <J40MainGridContainer fullWidth>
-        <div style={{ maxWidth: "90%", margin: "auto" }}>
+        <div style={{maxWidth: '90%', margin: 'auto'}}>
           <Grid className={styles.logoNavRow} row>
             {/* Logo */}
-            <Grid col={1} style={{ minWidth: "75px" }}>
+            <Grid col={1} style={{minWidth: '75px'}}>
               <Link
                 to={PAGES_ENDPOINTS.EXPLORE}
-                key={"explore-map"}
-                data-cy={"nav-link-explore-the-map"}
+                key={'explore-map'}
+                data-cy={'nav-link-explore-the-map'}
               >
                 <img
                   className={styles.logo}
@@ -299,27 +299,27 @@ const J40Header = ({ location }: IJ40Header) => {
               </Link>
               <Link
                 to={PAGES_ENDPOINTS.DATA}
-                key={"explore-data"}
-                data-cy={"nav-link-explore-the-data"}
+                key={'explore-data'}
+                data-cy={'nav-link-explore-the-data'}
               ></Link>
             </Grid>
 
             {/* Logo Title */}
-            <Grid col={6} style={{ alignContent: "center" }}>
+            <Grid col={6} style={{alignContent: 'center'}}>
               <Link
                 to={PAGES_ENDPOINTS.EXPLORE}
-                key={"explore-map"}
+                key={'explore-map'}
                 className="remove-link-style"
-                data-cy={"nav-link-explore-the-map"}
+                data-cy={'nav-link-explore-the-map'}
               >
                 <div className={styles.logoTitle}>{logoLine1}</div>
               </Link>
             </Grid>
 
             {/* Nav links */}
-            <Grid col={"fill"} className={styles.navLinks}>
+            <Grid col={'fill'} className={styles.navLinks}>
               <NavMenuButton
-                key={"mobileMenuButton"}
+                key={'mobileMenuButton'}
                 onClick={toggleMobileNav}
                 label="Menu"
               ></NavMenuButton>
