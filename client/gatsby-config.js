@@ -16,9 +16,9 @@ module.exports = {
   siteMetadata: {
     title: 'Justice40',
     image: '/static/favicon.ico',
-    siteUrl: process.env.SITE_URL || 'http://localhost:8000',
+    siteUrl: process.env.SITE_URL || 'http://localhost:3000',
   },
-  pathPrefix: process.env.PATH_PREFIX || '',
+  pathPrefix: process.env.PATH_PREFIX || '/justice40',
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
@@ -47,6 +47,13 @@ module.exports = {
         // option to redirect to `/en` when connecting `/`
         redirect: true,
         exludePages: [`/escontact`],
+      },
+    },
+    // add gatsby-plugin-react-svg to handle logical operators
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: {
+        modules: ['@observablehq/plot'],
       },
     },
     {

@@ -382,9 +382,8 @@ const J40Map = ({location}: IJ40Interface) => {
           // ****** Initialization props: ******
           // access token is j40StylesReadToken
           mapboxApiAccessToken={
-            process.env.MAPBOX_STYLES_READ_TOKEN ?
-              process.env.MAPBOX_STYLES_READ_TOKEN :
-              ''
+            'pk.eyJ1Ijoia2F0aGVyaW5lbGV5cSIsImEiOiJjbWIwYW11MTIwYWw2Mmtwd2Fmc2s0ZHg5' +
+  'In0.LYIFynxuLuF6aOk0FqMbXg'
           }
           // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
