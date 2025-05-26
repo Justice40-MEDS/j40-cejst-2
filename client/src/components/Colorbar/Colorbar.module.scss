@@ -1,0 +1,26 @@
+.colorbar {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.swatch {
+  width: 24px;
+  height: 16px;
+  margin-right: 0.5rem;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+.label {
+  font-size: 0.95em;
+}

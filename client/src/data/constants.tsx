@@ -375,11 +375,11 @@ export const PSIM_SELECTED_FEATURE_BORDER_COLOR = "#242426";
 export const ADD_SELECTED_FEATURE_BORDER_COLOR = "#290a01";
 
 export const PSIM_DEFAULT_COLOR = "#FBF8F3";
-export const PSIM_COLD_COLOR = "#1818ed";
+export const PSIM_COLD_COLOR = "#0220fa";
 export const PSIM_VERY_COLD_COLOR = "#0101b3";
 // export const PSIM_HOT_COLOR = "#7a1408";
-export const PSIM_HOT_COLOR = "#cf1717";
-export const PSIM_VERY_HOT_COLOR = "#ad0000";
+export const PSIM_HOT_COLOR = "#ed0404";
+export const PSIM_VERY_HOT_COLOR = "#990000";
 // export const PSIM_VERY_HOT_COLOR = "#bd0606";
 export const PSIM_NA_COLOR = "#FBF8F3";
 
@@ -402,16 +402,6 @@ export const ADD_5_COLOR = "#5f187f";
 export const ADD_6_COLOR = "#221150";
 export const ADD_7_COLOR = "#000004"; // Darkest
 
-// Inferno
-// export const ADD_0_COLOR = "#FBF8F3"; // Lightest
-// export const ADD_1_COLOR = "#fac228";
-// export const ADD_2_COLOR = "#f57d15";
-// export const ADD_3_COLOR = "#d44842";
-// export const ADD_4_COLOR = "#9f2a63";
-// export const ADD_5_COLOR = "#65156e";
-// export const ADD_6_COLOR = "#280b53";
-// export const ADD_7_COLOR = "#000004";
-
 // Viridis
 // export const ADD_0_COLOR = "#FBF8F3"; // Lightest
 // export const ADD_1_COLOR = "#a0da39";
@@ -421,6 +411,15 @@ export const ADD_7_COLOR = "#000004"; // Darkest
 // export const ADD_5_COLOR = "#365c8d";
 // export const ADD_6_COLOR = "#46327e";
 // export const ADD_7_COLOR = "#440154";
+
+// Graph colors
+export const AIAN_COLOR = "#741CD6";
+export const HIPI_COLOR = "#972843";
+export const ASIA_COLOR = "#6d8ef7";
+export const OTHER_RACE_COLOR = "#1E6A9C";
+export const HISP_COLOR = "#DC267F";
+export const BLACK_COLOR = "#9CBF5D";
+export const WHITE_COLOR = "#FE6100";
 
 // Widths
 export const FEATURE_BORDER_WIDTH = 0.8;

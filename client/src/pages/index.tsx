@@ -2,15 +2,12 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-// import ExploreDataBox from '../components/ExploreDataBox';
 import J40Map from '../components/J40Map';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 // import IncomeSlider from '../components/IncomeSlider';
 import Layout from '../components/layout';
-// import DatasetsButton from '../components/DatasetsButton';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
-// import {DATA_SURVEY_LINKS} from '../data/constants';
 
 interface IMapPageProps {
   location: Location;

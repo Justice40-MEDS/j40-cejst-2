@@ -194,12 +194,12 @@ const MapSearch = ({goToPlace}: IMapSearch) => {
 
   return (
     <div className={styles.mapSearchContainer}>
-      <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
       <Search
         placeholder={intl.formatMessage(placeholderText)}
         size="small"
         onSubmit={(e) => onSearchHandler(e)}
       />
+      <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
     </div>
   );
 };

@@ -15,7 +15,7 @@ const HotspotSidePanelInfo = () => {
     <aside className={styles.sidePanelInfoContainer}>
       {/* Heading 1 */}
       <header tabIndex={0} className={styles.sidePanelInfoTitle}>
-        Hot spots & Cold spots
+        Hot Spots & Cold Spots
       </header>
 
       {/* Paragraph 1 */}

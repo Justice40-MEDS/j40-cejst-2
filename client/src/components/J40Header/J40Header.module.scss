@@ -11,7 +11,7 @@
 
   .logo {
     @include u-width(15);
-    @include u-padding("05");
+    // @include u-padding("05");
   }
 
   // The logoTitle declaration is enabled for widths > 1200px

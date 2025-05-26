@@ -198,7 +198,7 @@ const ContactPage = ({location}: IContactPageProps) => {
                   <a className="usa-link" href="https://flukeandfeather.com/">
                     Dr. Max Czapanskiy
                   </a>{' '}
-                  for his statistical expertise and conceptual guidance
+                  for their statistical expertise and conceptual guidance
                 </p>
               </li>
               <li>
