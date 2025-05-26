@@ -17,8 +17,8 @@ import Language from '../Language';
 // @ts-ignore
 import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../../data/constants';
 import * as COMMON_COPY from '../../data/copy/common';
-// import siteLogo from '../../images/j40-logo-v2.png';
-// import siteLogo from '../../images/bren2.svg';
+
+// @ts-ignore
 import siteLogo from '../../images/circle_logo.svg';
 // import UpdateBanner from '../UpdateBanner';
 import * as styles from './J40Header.module.scss';
@@ -285,7 +285,7 @@ const J40Header = ({location}: IJ40Header) => {
         <div style={{maxWidth: '90%', margin: 'auto'}}>
           <Grid className={styles.logoNavRow} row>
             {/* Logo */}
-            <Grid col={1}>
+            <Grid col={1} style={{minWidth: '75px'}}>
               <Link
                 to={PAGES_ENDPOINTS.EXPLORE}
                 key={'explore-map'}

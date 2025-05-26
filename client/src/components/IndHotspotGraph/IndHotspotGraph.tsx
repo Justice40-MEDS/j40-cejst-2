@@ -8,14 +8,11 @@ interface Props {
   url: string;
 }
 
-const IndicatorDemGraph = ({url}: Props) => {
+const IndHotspotGraph = ({url}: Props) => {
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the data
-    // const url =
-    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json';
     console.log('Fetching data from:', url);
 
     fetch(url)
@@ -41,40 +38,25 @@ const IndicatorDemGraph = ({url}: Props) => {
         });
   }, []);
 
-  const racialOrder = [
-    'White (Non-Hispanic)',
-    'Black or African American',
-    'Hispanic or Latino',
-    'Other Race',
-    'Asian',
-    'Native Hawaiian and Pacific Islander',
-    'American Indian and Alaskan Native',
-  ];
+  const idLabel: { [key: string]: string } = {
+    0: 'No Cluster',
+    1: 'Hot Spot',
+    2: 'Cold Spot',
+  };
 
-  const racialOrderLegend = [
-    'American Indian and Alaskan Native',
-    'Native Hawaiian and Pacific Islander',
-    'Asian',
-    'Other Race',
-    'Hispanic or Latino',
-    'Black or African American',
-    'White (Non-Hispanic)',
-  ];
+  const idOrder = [0, 1, 2];
 
   // OG palette
   const colorPalette = [
-    CONSTANTS.AIAN_COLOR,
-    CONSTANTS.HIPI_COLOR,
-    CONSTANTS.ASIA_COLOR,
-    CONSTANTS.OTHER_RACE_COLOR,
-    CONSTANTS.HISP_COLOR,
-    CONSTANTS.BLACK_COLOR,
-    CONSTANTS.WHITE_COLOR,
+    CONSTANTS.PSIM_NA_COLOR,
+    CONSTANTS.PSIM_HOT_COLOR,
+    CONSTANTS.PSIM_COLD_COLOR,
   ];
 
-  const sortedData = data.sort(
-      (a, b) =>
-        racialOrder.indexOf(a.racial_group) - racialOrder.indexOf(b.racial_group),
+  const filteredData = data.filter((d) => d.category === 'ind');
+
+  const sortedData = filteredData.sort(
+      (a, b) => idOrder.indexOf(a.ID) - idOrder.indexOf(b.ID),
   );
 
   useEffect(() => {
@@ -82,42 +64,34 @@ const IndicatorDemGraph = ({url}: Props) => {
       const chart = Plot.plot({
         marks: [
           Plot.barY(sortedData, {
-            x: 'total_criteria',
-            y: 'percentage',
-            fill: 'racial_group',
-            tip: {
-              format: {
-                racial_group: (d) => d.replace(' and ', ' and<br>'),
-                y: (d) => `${Math.round(d)}%`,
-              },
-            },
+            x: (d) => idLabel[d.ID],
+            y: 'num_tracts',
+            fill: (d) => d.ID,
+            tip: true,
+            title: (d) => `${d.num_tracts} tracts`,
           }),
         ],
-        y: {axis: true, label: 'Percentage', tickFormat: (d) => `${d}%`},
-        x: {label: 'Indicator Thresholds Exceeded'},
+        y: {axis: true, label: 'Number of Census Tracts'},
+        x: {
+          label: 'Cluster Classification for Indicator Thresholds Exceeded',
+        },
         color: {
           range: colorPalette,
-          legend: true,
-          label: 'Race/Ethnicity',
-          domain: racialOrderLegend,
+          domain: idOrder,
         },
         marginBottom: 60,
         marginTop: 40,
-        marginLeft: 60,
+        marginLeft: 80,
         style: {
           fontFamily: 'Lexend, sans-serif',
           fontSize: '18px',
         },
       });
 
-      const container = document.getElementById('chart-container-2');
+      const container = document.getElementById('chart-container-4');
       if (container) {
         container.innerHTML = ''; // Clear any previous chart
         container.appendChild(chart);
-        // Move the tooltip group to the end of the SVG so it always appears on top
-        const svg = container.querySelector('svg');
-        const tip = svg?.querySelector('g[aria-label="tip"]');
-        if (tip && svg) svg.appendChild(tip);
       }
 
       // Animation on load
@@ -179,7 +153,7 @@ const IndicatorDemGraph = ({url}: Props) => {
     return <div>Loading Data...</div>;
   }
 
-  return <div id="chart-container-2" />;
+  return <div id="chart-container-4" />;
 };
 
-export default IndicatorDemGraph;
+export default IndHotspotGraph;

@@ -35,13 +35,14 @@ const AdditiveSidePanelInfo = ({
     <aside className={styles.sidePanelInfoContainer}>
       {/* Heading 1 */}
       <header tabIndex={0} className={styles.sidePanelInfoTitle}>
-        Total Thresholds Exceeded
+        {isBurdenLayer && 'Burden'}
+        {isIndicatorLayer && 'Indicator'} Thresholds Exceeded
       </header>
 
       {/* Paragraph 1 */}
       <p tabIndex={0}>
         This layer explores total {isBurdenLayer && 'burdens'}
-        {isIndicatorLayer && 'indicators'} in a census tract. A count of the
+        {isIndicatorLayer && 'indicators'} in a census tract. The number of
         thresholds exceeded can be found by selecting a specific census tract.
       </p>
 

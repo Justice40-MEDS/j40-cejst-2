@@ -6,16 +6,18 @@ import * as CONSTANTS from '../../data/constants';
 
 interface Props {
   url: string;
+  threshold: string;
+  chartContainer: string;
 }
 
-const IndicatorDemGraph = ({url}: Props) => {
+const HotspotDemGraph = ({url, threshold, chartContainer}: Props) => {
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch the data
     // const url =
-    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json';
+    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/burd_dem_long.json';
     console.log('Fetching data from:', url);
 
     fetch(url)
@@ -61,7 +63,22 @@ const IndicatorDemGraph = ({url}: Props) => {
     'White (Non-Hispanic)',
   ];
 
-  // OG palette
+  const clusterLabelMap = {
+    'Very Cold Spot': 'Very\nCold Spot',
+    'Cold Spot': 'Cold Spot',
+    'Very Hot Spot': 'Very\nHot Spot',
+    'Hot Spot': 'Hot Spot',
+    'Not Significant': 'Not\nSignificant',
+  };
+
+  const clusterOrder = [
+    'Very\nCold Spot',
+    'Cold Spot',
+    'Very\nHot Spot',
+    'Hot Spot',
+    'Not\nSignificant',
+  ];
+
   const colorPalette = [
     CONSTANTS.AIAN_COLOR,
     CONSTANTS.HIPI_COLOR,
@@ -77,31 +94,52 @@ const IndicatorDemGraph = ({url}: Props) => {
         racialOrder.indexOf(a.racial_group) - racialOrder.indexOf(b.racial_group),
   );
 
+  const processedData = sortedData.map((d) => {
+    // Pick the correct cluster field based on threshold
+    const clusterField =
+      threshold === 'burden' ? 'cluster_burd' : 'cluster_ind';
+    return {
+      ...d,
+      cluster: clusterLabelMap[d[clusterField]] || d[clusterField],
+    };
+  });
+
   useEffect(() => {
     const timeout = setTimeout(() => {
+      const xAxisLabel =
+        threshold === 'burden' ? 'Burden Cluster' : 'Indicator Cluster';
+
+      // const chartContainerNum = chartContainer;
+
       const chart = Plot.plot({
         marks: [
-          Plot.barY(sortedData, {
-            x: 'total_criteria',
+          Plot.barY(processedData, {
+            x: 'cluster',
             y: 'percentage',
             fill: 'racial_group',
             tip: {
+              title: (d) =>
+                `${
+                  threshold === 'burden' ?
+                    'Burden Cluster<br>Classification' :
+                    'Indicator Cluster<br>Classification'
+                }: ${d.cluster}`,
               format: {
-                racial_group: (d) => d.replace(' and ', ' and<br>'),
+                racial_group: (d) => d.replace('and', 'and<br>'),
                 y: (d) => `${Math.round(d)}%`,
               },
             },
           }),
         ],
         y: {axis: true, label: 'Percentage', tickFormat: (d) => `${d}%`},
-        x: {label: 'Indicator Thresholds Exceeded'},
+        x: {label: xAxisLabel, domain: clusterOrder},
         color: {
           range: colorPalette,
           legend: true,
           label: 'Race/Ethnicity',
           domain: racialOrderLegend,
         },
-        marginBottom: 60,
+        marginBottom: 70,
         marginTop: 40,
         marginLeft: 60,
         style: {
@@ -110,14 +148,10 @@ const IndicatorDemGraph = ({url}: Props) => {
         },
       });
 
-      const container = document.getElementById('chart-container-2');
+      const container = document.getElementById(chartContainer);
       if (container) {
         container.innerHTML = ''; // Clear any previous chart
         container.appendChild(chart);
-        // Move the tooltip group to the end of the SVG so it always appears on top
-        const svg = container.querySelector('svg');
-        const tip = svg?.querySelector('g[aria-label="tip"]');
-        if (tip && svg) svg.appendChild(tip);
       }
 
       // Animation on load
@@ -133,12 +167,11 @@ const IndicatorDemGraph = ({url}: Props) => {
 
       // Start from base (y = chart height, height = 0)
       bars
-          .attr('y', svg.node()?.getBoundingClientRect().height || 300)
+          .attr('y', svg.node()?.getBoundingClientRect().height || 300) // use fallback
           .attr('height', 0)
           .transition()
-          .duration(600)
-      // Stagger how the bars come up
-          .delay((_, i) => i * 8)
+          .duration(800)
+          .delay((_, i) => i * 10) // optional stagger
           .attr('y', (_, i, nodes) => {
             return d3.select(nodes[i]).attr('data-final-y');
           })
@@ -147,7 +180,6 @@ const IndicatorDemGraph = ({url}: Props) => {
           });
 
       // Manually style legend because I couldn't get it to work inside observable
-      // The text isn't contained inside p/text tag at all, it's inside a span
       const legendSpans = container?.querySelectorAll('span');
       legendSpans?.forEach((span) => {
         span.style.fontSize = '16px';
@@ -157,7 +189,6 @@ const IndicatorDemGraph = ({url}: Props) => {
         span.style.gap = '0.4em';
         span.style.fontFamily = 'Lexend, sans-serif';
 
-        // Set the dim for the little square
         const svg = span.querySelector('svg');
         if (svg) {
           svg.setAttribute('width', '17');
@@ -179,7 +210,7 @@ const IndicatorDemGraph = ({url}: Props) => {
     return <div>Loading Data...</div>;
   }
 
-  return <div id="chart-container-2" />;
+  return <div id={chartContainer} />;
 };
 
-export default IndicatorDemGraph;
+export default HotspotDemGraph;

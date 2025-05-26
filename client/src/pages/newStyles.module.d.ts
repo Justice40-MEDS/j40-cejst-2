@@ -1,7 +1,11 @@
 declare namespace NewStylesModuleScss {
     export interface INewStylesModuleScss {
       plotWrapper: string;
+      plotWrapperFacet: string;
       plotPageWrapper: string;
+      sectionHeaderGraph: string;
+      greenContainer: string;
+      graphTitle:string;
     }
   }
 

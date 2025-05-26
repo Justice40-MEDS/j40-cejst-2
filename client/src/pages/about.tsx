@@ -12,9 +12,9 @@ import SubPageNav from '../components/SubPageNav';
 import {GITHUB_LINK, GITHUB_LINK_ES} from '../constants';
 import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 import * as ABOUT_COPY from '../data/copy/about';
-
+// @ts-ignore
 import aboutJ40Image from '../images/about-usmap.svg';
-
+// @ts-ignore
 import githubIcon from '/node_modules/uswds/dist/img/usa-icons/github.svg'; // @ts-ignore
 
 interface IAboutPageProps {

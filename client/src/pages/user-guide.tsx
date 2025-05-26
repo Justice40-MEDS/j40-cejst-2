@@ -170,14 +170,12 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
             <h3>Color Legend</h3>
             <ul>
               <li>
-                <p>
-                  A color legend appears in the bottom-right corner of the map
-                </p>
+                <p>A color legend appears below the map</p>
               </li>
               <li>
                 <p>
                   For the cumulative layers, darker colors indicate higher
-                  burden/indicator counts
+                  burden or indicator thresholds exceeded
                 </p>
               </li>
               <li>
@@ -187,7 +185,10 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
                 </p>
               </li>
               <li>
-                <p>For the legacy layer, blue represents DACs</p>
+                <p>
+                  For the legacy layer, blue represents disadvantaged
+                  communities
+                </p>
               </li>
             </ul>
             <h2>4. Using the Sidebar</h2>
@@ -269,18 +270,18 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
               </li>
               <li>
                 <p>
-                  <strong>Demographic Comparison of Hotspots:</strong> Charts
-                  comparing demographic profiles across burden/indicator
-                  hotspots.
+                  <strong>Hot Spot and Cold Spot Distribution:</strong> Charts
+                  comparing the distribution of census tracts across different
+                  cluster classificiations.
                 </p>
               </li>
-              <li>
+              {/* <li>
                 <p>
                   <strong>Burden/Indicator Distribution:</strong> Interactive
                   bar chart showing burden/indicator breakdown by state or
                   county.
                 </p>
-              </li>
+              </li> */}
             </ul>
             <h3>Interacting with the Graphs</h3>
             <ul>
