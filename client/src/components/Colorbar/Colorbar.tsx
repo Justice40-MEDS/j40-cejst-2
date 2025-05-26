@@ -14,13 +14,13 @@ const colorStopsHotspot = [
 ];
 
 const colorStopsAddBurd = [
-  {color: CONSTANTS.ADD_1_COLOR, label: 'Low Burdens'},
-  {color: CONSTANTS.ADD_6_COLOR, label: 'High Burdens'},
+  {color: CONSTANTS.ADD_1_COLOR, label: '0 Burdens'},
+  {color: CONSTANTS.ADD_6_COLOR, label: '8 Burdens'},
 ];
 
 const colorStopsAddInd = [
-  {color: CONSTANTS.ADD_1_COLOR, label: 'Low Indicators'},
-  {color: CONSTANTS.ADD_6_COLOR, label: 'High Indicators'},
+  {color: CONSTANTS.ADD_1_COLOR, label: '0 Indicators'},
+  {color: CONSTANTS.ADD_6_COLOR, label: '18 Indicators'},
 ];
 
 const additiveGradient = `linear-gradient(to right, ${[

@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
 
+import * as CONSTANTS from '../../data/constants';
+
 interface Props {
   url: string;
 }
@@ -46,9 +48,9 @@ const IndHotspotGraph = ({url}: Props) => {
 
   // OG palette
   const colorPalette = [
-    '#dfdede', // NA
-    '#cf1717', // hot
-    '#1818ed', // cold
+    CONSTANTS.PSIM_NA_COLOR,
+    CONSTANTS.PSIM_HOT_COLOR,
+    CONSTANTS.PSIM_COLD_COLOR,
   ];
 
   const filteredData = data.filter((d) => d.category === 'ind');

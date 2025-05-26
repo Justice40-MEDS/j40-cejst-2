@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
 
+import * as CONSTANTS from '../../data/constants';
+
 interface Props {
   url: string;
 }
@@ -61,36 +63,14 @@ const IndicatorDemGraph = ({url}: Props) => {
 
   // OG palette
   const colorPalette = [
-    '#741CD6',
-    '#972843',
-    '#6d8ef7',
-    '#1E6A9C',
-    '#DC267F',
-    '#9CBF5D',
-    '#FE6100',
+    CONSTANTS.AIAN_COLOR,
+    CONSTANTS.HIPI_COLOR,
+    CONSTANTS.ASIA_COLOR,
+    CONSTANTS.OTHER_RACE_COLOR,
+    CONSTANTS.HISP_COLOR,
+    CONSTANTS.BLACK_COLOR,
+    CONSTANTS.WHITE_COLOR,
   ];
-
-  // Pastel version
-  // const colorPalette = [
-  //   '#B99CE9', // softer purple
-  //   '#D892A3', // muted rose
-  //   '#AFC6FB', // lighter blue
-  //   '#85B3D4', // soft steel blue
-  //   '#E59CBF', // pastel pink
-  //   '#C8DB9E', // muted lime green
-  //   '#FFB380', // soft orange
-  // ];
-
-  // In between palette
-  // const colorPalette = [
-  //   '#9B5EDB', // medium purple
-  //   '#B35C6E', // dusty rose
-  //   '#8DAAF9', // calmer blue
-  //   '#3F86B5', // softened navy
-  //   '#E05A9F', // muted magenta
-  //   '#B4D275', // soft olive-lime
-  //   '#FF9040', // tangerine
-  // ];
 
   const sortedData = data.sort(
       (a, b) =>

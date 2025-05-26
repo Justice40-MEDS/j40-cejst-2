@@ -7,6 +7,15 @@
     font-family: 'Lexend', sans-serif;
 }
 
+@media (max-width: 1023px) {
+    .plotWrapper {
+        width: 100%;
+        max-width: 90%;
+        margin: 0 auto 1rem auto;
+        font-family: 'Lexend', sans-serif;
+    }
+}
+
 .plotWrapperFacet {
     width: 100%;
     max-width: 90%;

@@ -2,59 +2,19 @@ import React, {useState, useEffect} from 'react';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
 
+import * as CONSTANTS from '../../data/constants';
+
 interface Props {
   url: string;
+  threshold: string;
+  chartContainer: string;
 }
-// import {useFlags} from '../../contexts/FlagContext';
 
-// export const featureURLForTilesetName = (
-//     tilesetType: string,
-//     // tilesetSubtype: string,
-//     tilesetName: string,
-// ): string => {
-//   const flags = useFlags();
-
-//   const pipelineStagingBaseURL =
-//     process.env.GATSBY_CDN_TILES_BASE_URL + `/data-pipeline-staging`;
-//   const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-
-//   if ('stage_hash' in flags) {
-//     const regex = /^[0-9]{4}\/[a-f0-9]{40}$/;
-//     if (!regex.test(flags['stage_hash'])) {
-//       console.error(COMMON_COPY.CONSOLE_ERROR.STAGE_URL);
-//     }
-
-//     return `${pipelineStagingBaseURL}/${flags['stage_hash']}/data/score/tiles/${tilesetName}/${XYZ_SUFFIX}`;
-//   } else {
-//     const featureTileBaseURL = constants.TILE_BASE_URL;
-//     const featureTilePath = constants.TILE_PATH;
-//     const mapTilesPath = process.env.GATSBY_MAP_TILES_PATH;
-
-//     const pathParts = [
-//       featureTileBaseURL,
-//       featureTilePath,
-//       mapTilesPath,
-//       tilesetType,
-//       // tilesetSubtype,
-//       tilesetName,
-//       XYZ_SUFFIX,
-//     ]
-//         .filter(Boolean)
-//         .map((part) => part.replace(/^\/|\/$/g, '')) // trim leading/trailing slashes
-//         .join('/');
-
-//     return pathParts.startsWith('http') ? pathParts : `/${pathParts}`;
-//   }
-// };
-
-const ObservableTest = ({url}: Props) => {
+const ObservableTest = ({url, threshold, chartContainer}: Props) => {
   const [data, setData] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the data
-    // const url =
-    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/burd_dem_long.json';
     console.log('Fetching data from:', url);
 
     fetch(url)
@@ -101,13 +61,13 @@ const ObservableTest = ({url}: Props) => {
   ];
 
   const colorPalette = [
-    '#741CD6',
-    '#972843',
-    '#6d8ef7',
-    '#1E6A9C',
-    '#DC267F',
-    '#9CBF5D',
-    '#FE6100',
+    CONSTANTS.AIAN_COLOR,
+    CONSTANTS.HIPI_COLOR,
+    CONSTANTS.ASIA_COLOR,
+    CONSTANTS.OTHER_RACE_COLOR,
+    CONSTANTS.HISP_COLOR,
+    CONSTANTS.BLACK_COLOR,
+    CONSTANTS.WHITE_COLOR,
   ];
 
   const sortedData = data.sort(
@@ -115,12 +75,27 @@ const ObservableTest = ({url}: Props) => {
         racialOrder.indexOf(a.racial_group) - racialOrder.indexOf(b.racial_group),
   );
 
+  const processedData = sortedData.map((d) => {
+    // Pick the correct cluster field based on threshold
+    const threshfield =
+      threshold === 'burden' ? 'total_burdens' : 'total_criteria';
+    return {
+      ...d,
+      thresholdExceeded: d[threshfield],
+    };
+  });
+
   useEffect(() => {
     const timeout = setTimeout(() => {
+      const xAxisLabel =
+        threshold === 'burden' ?
+          'Burden Thresholds Exceeded' :
+          'Indicator Thresholds Exceeded';
+
       const chart = Plot.plot({
         marks: [
-          Plot.barY(sortedData, {
-            x: 'total_burdens',
+          Plot.barY(processedData, {
+            x: 'thresholdExceeded',
             y: 'percentage',
             fill: 'racial_group',
             tip: {
@@ -132,13 +107,12 @@ const ObservableTest = ({url}: Props) => {
           }),
         ],
         y: {axis: true, label: 'Percentage', tickFormat: (d) => `${d}%`},
-        x: {label: 'Burden Thresholds Exceeded'},
+        x: {label: xAxisLabel},
         color: {
           range: colorPalette,
           legend: true,
           label: 'Race/Ethnicity',
           domain: racialOrderLegend,
-          // legendPosition: 'bottom',
         },
         marginBottom: 60,
         marginTop: 40,
@@ -149,7 +123,7 @@ const ObservableTest = ({url}: Props) => {
         },
       });
 
-      const container = document.getElementById('chart-container-1');
+      const container = document.getElementById(chartContainer);
       if (container) {
         container.innerHTML = ''; // Clear any previous chart
         container.appendChild(chart);
@@ -211,7 +185,7 @@ const ObservableTest = ({url}: Props) => {
     return <div>Loading Data...</div>;
   }
 
-  return <div id="chart-container-1" />;
+  return <div id={chartContainer} />;
 };
 
 export default ObservableTest;

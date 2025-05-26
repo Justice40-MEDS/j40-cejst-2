@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as Plot from '@observablehq/plot';
 import * as d3 from 'd3';
 
+import * as CONSTANTS from '../../data/constants';
+
 interface Props {
   url: string;
   threshold: string;
@@ -78,13 +80,13 @@ const HotspotDemGraph = ({url, threshold, chartContainer}: Props) => {
   ];
 
   const colorPalette = [
-    '#741CD6',
-    '#972843',
-    '#6d8ef7',
-    '#1E6A9C',
-    '#DC267F',
-    '#9CBF5D',
-    '#FE6100',
+    CONSTANTS.AIAN_COLOR,
+    CONSTANTS.HIPI_COLOR,
+    CONSTANTS.ASIA_COLOR,
+    CONSTANTS.OTHER_RACE_COLOR,
+    CONSTANTS.HISP_COLOR,
+    CONSTANTS.BLACK_COLOR,
+    CONSTANTS.WHITE_COLOR,
   ];
 
   const sortedData = data.sort(
@@ -105,9 +107,7 @@ const HotspotDemGraph = ({url, threshold, chartContainer}: Props) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       const xAxisLabel =
-        threshold === 'burden' ?
-          'Burden Cluster Classification' :
-          'Indicator Cluster Classification';
+        threshold === 'burden' ? 'Burden Cluster' : 'Indicator Cluster';
 
       // const chartContainerNum = chartContainer;
 

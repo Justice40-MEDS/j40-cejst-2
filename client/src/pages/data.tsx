@@ -5,13 +5,13 @@ import Layout from '../components/layout';
 
 import InteractiveGraph from '../components/InteractiveGraph';
 import ObservableTest from '../components/ObservableTest';
-import IndicatorDemGraph from '../components/IndicatorDemGraph';
 import HotspotGraph from '../components/HotspotGraph';
 import IndHotspotGraph from '../components/IndHotspotGraph';
 import HotspotDemGraph from '../components/HotspotDemGraph';
 
 // @ts-ignore
 import * as styles from './newStyles.module.scss';
+import * as CONSTANTS from '../data/constants';
 
 interface IDataPageProps {
   location: Location;
@@ -68,7 +68,7 @@ const DataPage = ({location}: IDataPageProps) => {
           }}
         >
           <h3 className={styles.graphTitle}>
-            Distribution of Total Thresholds Exceeded by Racial/Ethnic Group
+            Distribution of Thresholds Exceeded by Racial/Ethnic Group
           </h3>
           <Grid row gap={6}>
             {/* First column */}
@@ -78,8 +78,68 @@ const DataPage = ({location}: IDataPageProps) => {
                   url={
                     'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/burd_dem_long.json'
                   }
+                  threshold="burden"
+                  chartContainer="chart-container-1"
                 ></ObservableTest>
               </div>
+            </Grid>
+
+            {/* Second Column */}
+            <Grid desktop={{col: 6}} col={12}>
+              <div id="chart-container-2" className={styles.plotWrapper}>
+                <ObservableTest
+                  url={
+                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json'
+                  }
+                  threshold="indicator"
+                  chartContainer="chart-container-2"
+                ></ObservableTest>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+      </J40MainGridContainer>
+
+      {/* Insights and analyses demographics thresholds */}
+      <J40MainGridContainer fullWidth={true}>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 3rem auto',
+            padding: '0 1rem',
+          }}
+        >
+          <h4>Insights and Analyses</h4>
+          <p>
+            These bar charts show the distribution of racial/ethnic groups
+            across the the number of burden or indicator thresholds exceeded.
+            One key takeaway is that as exceeded thresholds increase, the
+            proportion of people that identify as{' '}
+            <span style={{color: CONSTANTS.BLACK_COLOR}}>
+              Black or African American
+            </span>{' '}
+            also increases. Similarly, the proportion of people that identify as{' '}
+            <span style={{color: CONSTANTS.WHITE_COLOR}}>white</span>{' '}
+            decreases as the thresholds increase. It is important to note that
+            these numbers are percentages, meaning it only represents the
+            proportional breakdown across each threshold value.{' '}
+          </p>
+        </div>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth>
+        <div
+          style={{
+            maxWidth: '90%',
+            margin: '0 auto 20px auto',
+            padding: '0 1rem',
+          }}
+        >
+          <h3 className={styles.graphTitle}>
+            Distribution of Cluster Classification by Racial/Ethnic Group
+          </h3>
+          <Grid row gap={6}>
+            <Grid desktop={{col: 6}} col={12}>
               <div id="chart-container-6" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
@@ -90,12 +150,7 @@ const DataPage = ({location}: IDataPageProps) => {
                 ></HotspotDemGraph>
               </div>
             </Grid>
-
-            {/* Second Column */}
             <Grid desktop={{col: 6}} col={12}>
-              <div id="chart-container-2" className={styles.plotWrapper}>
-                <IndicatorDemGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json"></IndicatorDemGraph>
-              </div>
               <div id="chart-container-7" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
@@ -110,7 +165,7 @@ const DataPage = ({location}: IDataPageProps) => {
         </div>
       </J40MainGridContainer>
 
-      {/* Insights and analyses demographics */}
+      {/* Insights and analyses demographics hotspots */}
       <J40MainGridContainer fullWidth={true}>
         <div
           style={{
@@ -122,15 +177,25 @@ const DataPage = ({location}: IDataPageProps) => {
           <h4>Insights and Analyses</h4>
           <p>
             These bar charts show the distribution of racial/ethnic groups
-            across the the number of burden or indicator thresholds exceeded.
-            One key takeaway is that as exceeded thresholds increase, the
-            proportion of people that identify as{' '}
-            <span style={{color: '#9BBE5E'}}>Black or African American</span>{' '}
-            also increases. Similarly, the proportion of people that identify as{' '}
-            <span style={{color: '#FE6100'}}>white</span> decreases as the
-            thresholds increase. It is important to note that these numbers are
-            percentages, meaning it only represents the proportional breakdown
-            across each threshold value.{' '}
+            across cluster classification. One key takeaway is that{' '}
+            <span style={{color: CONSTANTS.WHITE_COLOR}}>white</span>{' '}
+            populations make up 70-80% of the census tracts that are cold spots.
+            Cold spots represent areas that have significantly fewer thresholds
+            exceeded when proportionally compared to the average thresholds
+            exceeded across the United States. People that identify as{' '}
+            <span style={{color: CONSTANTS.BLACK_COLOR}}>
+              Black or African American
+            </span>{' '}
+            or{' '}
+            <span style={{color: CONSTANTS.HISP_COLOR}}>
+              Hispanic or Latino
+            </span>{' '}
+            both compose between 20-30% of census tracts that are hotspots. Hot
+            spots represent areas that have significantly more thresholds
+            exceeded when proportionally compared to the average thresholds
+            exceeded across the United States. It is important to note that
+            these numbers are percentages, meaning it only represents the
+            proportional breakdown across each threshold value.{' '}
           </p>
         </div>
       </J40MainGridContainer>
