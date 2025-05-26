@@ -354,7 +354,15 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid desktop={{col: 9}} className={styles.j40Map}>
-<<<<<<< HEAD
+        <div 
+          style={{
+            position: 'relative',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+           <div style={{flex: 1, minHeight: 0}}>
         {/**
          * Note:
          * The MapSearch component is no longer used in this location. It has been moved inside the
@@ -421,17 +429,7 @@ const J40Map = ({location}: IJ40Interface) => {
           onTransitionEnd={onTransitionEnd}
           ref={mapRef}
           data-cy={'reactMapGL'}
-=======
-        <div
-          style={{
-            position: 'relative',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
->>>>>>> main
-        >
-          <div style={{flex: 1, minHeight: 0}}>
+          >
             {/**
              * Note:
              * The MapSearch component is no longer used in this location. It has been moved inside the
