@@ -72,7 +72,11 @@ const DataPage = ({location}: IDataPageProps) => {
           </h3>
           <Grid row gap={6}>
             {/* First column */}
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-1" className={styles.plotWrapper}>
                 <ObservableTest
                   url={
@@ -85,7 +89,11 @@ const DataPage = ({location}: IDataPageProps) => {
             </Grid>
 
             {/* Second Column */}
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-2" className={styles.plotWrapper}>
                 <ObservableTest
                   url={
@@ -139,7 +147,11 @@ const DataPage = ({location}: IDataPageProps) => {
             Distribution of Cluster Classification by Racial/Ethnic Group
           </h3>
           <Grid row gap={6}>
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-6" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
@@ -150,7 +162,11 @@ const DataPage = ({location}: IDataPageProps) => {
                 ></HotspotDemGraph>
               </div>
             </Grid>
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-7" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
@@ -221,7 +237,11 @@ const DataPage = ({location}: IDataPageProps) => {
           </h3>
           <Grid row gap={6}>
             {/* First column */}
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-3" className={styles.plotWrapper}>
                 <HotspotGraph
                   url={
@@ -232,7 +252,11 @@ const DataPage = ({location}: IDataPageProps) => {
             </Grid>
 
             {/* Second Column */}
-            <Grid desktop={{col: 6}} col={12}>
+            <Grid
+              desktop={{col: 6}}
+              col={12}
+              className={styles.gridMarginSmall}
+            >
               <div id="chart-container-4" className={styles.plotWrapper}>
                 <IndHotspotGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/gi_total.json"></IndHotspotGraph>
               </div>
