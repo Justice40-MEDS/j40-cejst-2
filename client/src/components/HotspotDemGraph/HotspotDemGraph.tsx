@@ -197,7 +197,7 @@ const HotspotDemGraph = ({url, threshold, chartContainer}: Props) => {
       });
 
       return () => chart.remove();
-    }, 0); // Let the browser render layout first
+    }, 300); // Let the browser render layout first
 
     return () => clearTimeout(timeout);
   }, [sortedData]);
