@@ -8,6 +8,7 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
+import {PAGES_ENDPOINTS} from '../data/constants';
 
 interface IMapPageProps {
   location: Location;
@@ -40,7 +41,19 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
               <p style={{marginTop: '0rem'}}>
                 {EXPLORE_COPY.PAGE_DESCRIPTION1}
               </p>
-              <p>{EXPLORE_COPY.PAGE_DESCRIPTION2}</p>
+              <p>
+                A burden represents one of 8 broad environmental and economic
+                categories of climate change, energy, health, housing, legacy
+                pollution, transportation, water and wastewater, and workforce
+                development. Each burden category has between 2-5 associated
+                indicators. More detailed information about the burdens and
+                indicators can be found by clicking on a census tract, or
+                navigating to the{' '}
+                <a className="usa-link" href={PAGES_ENDPOINTS.METHODOLOGY}>
+                  methodology.
+                </a>{' '}
+                page.
+              </p>
             </Grid>
             <Grid desktop={{col: 4}} tablet={{col: 10}} col={12}>
               {/* <ExploreDataBox /> */}

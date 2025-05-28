@@ -64,7 +64,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
                 </strong>
                 . These are communities that have been historically
                 marginalized, underserved, and overburdened by pollution.
-                Justice 40 covered more than 400 programs across two dozen
+                Justice40 covered more than 400 programs across two dozen
                 federal agencies and focused on investments in climate change,
                 clean energy, sustainable housing, workforce development,
                 pollution reduction, and clean water infrastructure. This

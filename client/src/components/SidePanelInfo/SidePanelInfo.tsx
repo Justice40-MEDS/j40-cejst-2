@@ -37,6 +37,10 @@ const SidePanelInfo = () => {
 
   return (
     <aside className={styles.sidePanelInfoContainer}>
+      <header tabIndex={0} className={styles.sidePanelInfoTitle}>
+        Legacy Layer
+      </header>
+      <p> This layer represents the original CEJST tool.</p>
 
       {/* Heading 1 */}
       <header tabIndex={0} className={styles.sidePanelInfoTitle}>
@@ -46,26 +50,38 @@ const SidePanelInfo = () => {
       {/* Paragraph 1 */}
       <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART1)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={plusIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PLUS)}
+        {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={plusIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PLUS,
+            )}
           />
-        }
+        )}
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART2)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={searchIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.SEARCH)}
+        {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={searchIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.SEARCH,
+            )}
           />
-        }
+        )}
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART3)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={locateIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.LOCATE)}
+        {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={locateIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.LOCATE,
+            )}
           />
-        }
+        )}
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART4)}
         {/* {
           windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
@@ -84,77 +100,111 @@ const SidePanelInfo = () => {
       {/* Paragraph 2 */}
       <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2_PART1)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={puzzleIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.TRACT)}
+        {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={puzzleIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.TRACT,
+            )}
           />
-        }
+        )}
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2_PART2)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={peopleIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PEOPLE)}
+        {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={peopleIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PEOPLE,
+            )}
           />
-        }
+        )}
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2_PART3)}
       </p>
 
       {/* Paragraph 3 */}
-      {
-        windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
+      {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
         <p tabIndex={0}>
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART1)}
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={censusDotIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART1,
+          )}
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={censusDotIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE,
+            )}
           />
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART2)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART2,
+          )}
         </p>
-      }
+      )}
 
       {/* Paragraph 4 */}
-      {
-        windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
+      {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
         <p tabIndex={0}>
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART1)}
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={bellCurveIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.BELL_CURVE)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART1,
+          )}
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={bellCurveIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.BELL_CURVE,
+            )}
           />
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART2)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART2,
+          )}
         </p>
-      }
+      )}
 
       {/* Paragraph 5 */}
-      {
-        windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-       <p tabIndex={0}>
-         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART1)}
-         <img tabIndex={0} className={styles.sidePanelInfoIcon} src={fileUpIcon}
-           alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.FILE_UP)}
-         />
-         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART2)}
-         <img tabIndex={0} className={styles.sidePanelInfoIcon} src={pieChartIcon}
-           alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PIE_CHART)}
-         />
-         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART3)}
-         <img tabIndex={0} className={styles.sidePanelInfoIcon} src={checkIcon}
-           alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.CHECK)}
-         />
-         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART4)}
-       </p>
-      }
-
-      {/* Paragraph 6 */}
-      {
-        windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
+      {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && (
         <p tabIndex={0}>
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA6_PART1)}
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={censusDotIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART1,
+          )}
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={fileUpIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.FILE_UP,
+            )}
           />
-          {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA6_PART2)}
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART2,
+          )}
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={pieChartIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PIE_CHART,
+            )}
+          />
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART3,
+          )}
+          <img
+            tabIndex={0}
+            className={styles.sidePanelInfoIcon}
+            src={checkIcon}
+            alt={intl.formatMessage(
+                EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.CHECK,
+            )}
+          />
+          {intl.formatMessage(
+              EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5_PART4,
+          )}
         </p>
-      }
+      )}
     </aside>
   );
 };

@@ -53,17 +53,17 @@ export const PAGE_DESCRIPTION1 = (
   />
 );
 
-export const PAGE_DESCRIPTION2 = (
-  <FormattedMessage
-    id={'explore.map.page.description.2'}
-    defaultMessage={`
-    More information, including demographics and thresholds exceeded, can be found by zooming in and selecting a census tract.
-  `}
-    description={
-      'On the explore the map page, the fifth description of the page'
-    }
-  />
-);
+// export const PAGE_DESCRIPTION2 = (
+//   <FormattedMessage
+//     id={'explore.map.page.description.2'}
+//     defaultMessage={`
+//     More information, including demographics and thresholds exceeded, can be found by zooming in and selecting a census tract.
+//   `}
+//     description={
+//       'On the explore the map page, the fifth description of the page'
+//     }
+//   />
+// );
 
 export const LEGEND = defineMessages({
   PRIORITY_LABEL: {

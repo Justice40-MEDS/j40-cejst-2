@@ -206,12 +206,12 @@ const DataPage = ({location}: IDataPageProps) => {
             <span style={{color: CONSTANTS.HISP_COLOR}}>
               Hispanic or Latino
             </span>{' '}
-            both compose between 20-30% of census tracts that are hotspots. Hot
+            both compose between 20-30% of census tracts that are hot spots. Hot
             spots represent areas that have significantly more thresholds
             exceeded when proportionally compared to the average thresholds
             exceeded across the United States. It is important to note that
             these numbers are percentages, meaning it only represents the
-            proportional breakdown across each threshold value.{' '}
+            proportional breakdown across each cluster classification.{' '}
           </p>
         </div>
       </J40MainGridContainer>

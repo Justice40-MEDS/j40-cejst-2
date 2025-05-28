@@ -112,12 +112,6 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
                   top-right corner to choose a layer to visualize.
                 </p>
               </li>
-              <li>
-                <p>
-                  <strong>Income Filter:</strong> Use the slider above the map
-                  to filter census tracts by income percentile.
-                </p>
-              </li>
             </ul>
             <h3>Switching Map Layers</h3>
             <ol>
