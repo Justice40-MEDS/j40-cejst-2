@@ -11,13 +11,16 @@ dotenv.config();
 // .env.production or .env.development for application
 // env variables.
 dotenv.config({path: `.env.${process.env.NODE_ENV}`});
+console.log('PATH_PREFIX =', process.env.PATH_PREFIX);
+console.log('pathPrefix being used =', process.env.PATH_PREFIX || '/justice40');
 
 module.exports = {
   siteMetadata: {
     title: 'Justice40',
     image: '/static/favicon.ico',
-    siteUrl: process.env.SITE_URL || 'http://localhost:3000',
+    siteUrl: process.env.SITE_URL || 'https://apps.bren.ucsb.edu',
   },
+  // pathPrefix: '/justice40',
   pathPrefix: process.env.PATH_PREFIX || '/justice40',
   plugins: [
     {
@@ -117,3 +120,5 @@ module.exports = {
     },
   ],
 };
+
+console.log('Final config =', module.exports);

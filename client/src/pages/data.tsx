@@ -76,7 +76,7 @@ const DataPage = ({location}: IDataPageProps) => {
               <div id="chart-container-1" className={styles.plotWrapper}>
                 <ObservableTest
                   url={
-                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/burd_dem_long.json'
+                    'https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/burd_dem_long.json'
                   }
                   threshold="burden"
                   chartContainer="chart-container-1"
@@ -89,7 +89,7 @@ const DataPage = ({location}: IDataPageProps) => {
               <div id="chart-container-2" className={styles.plotWrapper}>
                 <ObservableTest
                   url={
-                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json'
+                    'https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/ind_dem_long.json'
                   }
                   threshold="indicator"
                   chartContainer="chart-container-2"
@@ -143,7 +143,7 @@ const DataPage = ({location}: IDataPageProps) => {
               <div id="chart-container-6" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
-                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/cluster_dem_long_burd.json'
+                    'https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/cluster_dem_long_burd.json'
                   }
                   threshold="burden"
                   chartContainer="chart-container-6"
@@ -154,7 +154,7 @@ const DataPage = ({location}: IDataPageProps) => {
               <div id="chart-container-7" className={styles.plotWrapper}>
                 <HotspotDemGraph
                   url={
-                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/cluster_dem_long_ind.json'
+                    'https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/cluster_dem_long_ind.json'
                   }
                   threshold="indicator"
                   chartContainer="chart-container-7"
@@ -225,7 +225,7 @@ const DataPage = ({location}: IDataPageProps) => {
               <div id="chart-container-3" className={styles.plotWrapper}>
                 <HotspotGraph
                   url={
-                    'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/gi_total.json'
+                    'https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/gi_total.json'
                   }
                 ></HotspotGraph>
               </div>
@@ -234,7 +234,7 @@ const DataPage = ({location}: IDataPageProps) => {
             {/* Second Column */}
             <Grid desktop={{col: 6}} col={12}>
               <div id="chart-container-4" className={styles.plotWrapper}>
-                <IndHotspotGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/gi_total.json"></IndHotspotGraph>
+                <IndHotspotGraph url="https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/gi_total.json"></IndHotspotGraph>
               </div>
             </Grid>
           </Grid>
@@ -286,7 +286,7 @@ const DataPage = ({location}: IDataPageProps) => {
             the distribution of percentile risk for the selected threshold.
           </p>
           <div id="chart-container-int" className={styles.plotWrapper}>
-            <InteractiveGraph url="http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/tract_total.json"></InteractiveGraph>
+            <InteractiveGraph url="https://apps.bren.ucsb.edu/data/data-pipeline/data_pipeline/data-versions/2.0/data/score/geojson/tract_total.json"></InteractiveGraph>
           </div>
         </div>
       </J40MainGridContainer>

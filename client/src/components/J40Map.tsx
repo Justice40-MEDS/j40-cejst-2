@@ -354,7 +354,7 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid desktop={{col: 9}} className={styles.j40Map}>
-        <div 
+        <div
           style={{
             position: 'relative',
             height: '100%',
@@ -362,74 +362,7 @@ const J40Map = ({location}: IJ40Interface) => {
             flexDirection: 'column',
           }}
         >
-           <div style={{flex: 1, minHeight: 0}}>
-        {/**
-         * Note:
-         * The MapSearch component is no longer used in this location. It has been moved inside the
-         * <ReactMapGL> component itself.
-         *
-         * It was originally wrapped in a div in order to allow this feature
-         * to be behind a feature flag. This was causing a bug for MapSearch to render
-         * correctly in a production build. Leaving this comment here in case future flags are
-         * needed in this component.
-         *
-         * When the MapSearch component is placed behind a feature flag without a div wrapping
-         * MapSearch, the production build will inject CSS due to the null in the false conditional
-         * case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
-         * be tested with a production build via:
-         *   - npm run clean && npm run build && npm run serve
-         *
-         * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
-         *
-         * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
-         */}
-
-        {/**
-         * The ReactMapGL component's props are grouped by the API's documentation. The component also has
-         * some children.
-         */}
-        <ReactMapGL
-          // ****** Initialization props: ******
-          // access token is j40StylesReadToken
-          mapboxApiAccessToken={
-            'pk.eyJ1Ijoia2F0aGVyaW5lbGV5cSIsImEiOiJjbWIwYW11MTIwYWw2Mmtwd2Fmc2s0ZHg5' +
-  'In0.LYIFynxuLuF6aOk0FqMbXg'
-          }
-          // ****** Map state props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
-          {...viewport}
-          mapStyle={
-            process.env.MAPBOX_STYLES_READ_TOKEN ?
-              'mapbox://styles/justice40/cl9g30qh7000p15l9cp1ftw16' :
-              'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'
-          }
-          width="100%"
-          // Ajusting this height with a conditional statement will not render the map on staging.
-          // The reason for this issue is unknown. Consider styling the parent container via SASS.
-          height="100%"
-          mapOptions={{hash: true}}
-          // ****** Interaction option props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
-          maxZoom={constants.GLOBAL_MAX_ZOOM}
-          minZoom={constants.GLOBAL_MIN_ZOOM}
-          dragRotate={false}
-          touchRotate={false}
-          // eslint-disable-next-line max-len
-          // interactiveLayerIds={[
-          //   constants.HIGH_ZOOM_LAYER_ID,
-          //   constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
-          // ]}
-          interactiveLayerIds={interactiveLayerIds}
-          // ****** Callback props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
-          onViewportChange={setViewport}
-          onClick={onClick}
-          onLoad={onLoad}
-          onTransitionStart={onTransitionStart}
-          onTransitionEnd={onTransitionEnd}
-          ref={mapRef}
-          data-cy={'reactMapGL'}
-          >
+          <div style={{flex: 1, minHeight: 0}}>
             {/**
              * Note:
              * The MapSearch component is no longer used in this location. It has been moved inside the
@@ -459,9 +392,8 @@ const J40Map = ({location}: IJ40Interface) => {
               // ****** Initialization props: ******
               // access token is j40StylesReadToken
               mapboxApiAccessToken={
-                process.env.MAPBOX_STYLES_READ_TOKEN ?
-                  process.env.MAPBOX_STYLES_READ_TOKEN :
-                  ''
+                'pk.eyJ1Ijoia2F0aGVyaW5lbGV5cSIsImEiOiJjbWIwYW11MTIwYWw2Mmtwd2Fmc2s0ZHg5' +
+  'In0.LYIFynxuLuF6aOk0FqMbXg'
               }
               // ****** Map state props: ******
               // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
