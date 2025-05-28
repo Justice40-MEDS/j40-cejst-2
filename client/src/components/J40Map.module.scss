@@ -90,3 +90,9 @@
     height: 75vh;
   }
 }
+
+@media (max-width: 479px) {
+  .geolocateBox > :first-child {
+    position: static !important;
+  }
+}
