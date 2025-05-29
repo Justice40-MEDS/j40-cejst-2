@@ -47,12 +47,30 @@
   }
 }
 
+@media (max-width: 849px){
+    .stateLabel {
+    display: inline-block;
+    margin-right: 0.8rem;
+    margin-bottom: 0rem !important;
+  }
+
+    .burdenLabel {
+    display: inline-block;
+    margin-right: 0.8rem;
+    margin-bottom: 0rem !important;
+  }
+// This was not adding any padding/margin to the bottom
+  //   .indicatorLabel {
+  //   padding-bottom: 3rem !important;
+  // }
+}
+
 .selectStateNote {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #555;
     text-align: center;
     font-weight: bold;
@@ -60,3 +78,23 @@
     padding: 1rem;
     border-radius: 8px;
 }
+
+.stateLabel {
+  display: inline-block;
+  margin-right: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+// .countyLabel {
+
+// }
+
+.burdenLabel {
+  display: inline-block;
+  margin-right: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+// .indicatorLabel {
+
+// }

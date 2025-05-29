@@ -104,7 +104,7 @@ const Colorbar = ({visibleLayer}: IColorbar) => {
           <span
             key={idx}
             style={{
-              fontSize: '1.1em',
+              fontSize: '1em',
               textAlign: 'center',
             }}
           >

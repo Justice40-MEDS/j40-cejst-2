@@ -1116,8 +1116,8 @@ const HotspotAreaDetail = ({
   return (
     <aside className={styles.areaDetailContainer} data-cy={"aside"}>
       <div style={{paddingLeft: "1.2rem"}}>
-        {isBurdenLayer && <h4>Burden Hot spots</h4>}
-        {isIndicatorLayer && <h4>Indicator Hot spots</h4>}
+        {isBurdenLayer && <h4>Burden Hot Spots</h4>}
+        {isIndicatorLayer && <h4>Indicator Hot Spots</h4>}
       </div>
 
       {/* Cluster class */}
@@ -1158,6 +1158,9 @@ const HotspotAreaDetail = ({
       {/* Demographics */}
       <div style={{marginBottom: "0.8rem"}}>
         <TractDemographics properties={properties} />
+        <div style={{paddingLeft: "1.2rem"}}>
+          <p>Specific thresholds exceeded can be explored below:</p>
+        </div>
         <div className={styles.categorization}>
           {/* <div className={styles.prioCopy}>
             <PrioritizationCopy
