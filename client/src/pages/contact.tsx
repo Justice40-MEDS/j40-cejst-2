@@ -217,6 +217,11 @@ const ContactPage = ({location}: IContactPageProps) => {
                   for her assistance with geospatial tiling
                 </p>
               </li>
+              <li>
+                <p>
+                  Noah Davidson for his assistance with production deployment
+                </p>
+              </li>
             </ul>
           </Grid>
         </J40MainGridContainer>

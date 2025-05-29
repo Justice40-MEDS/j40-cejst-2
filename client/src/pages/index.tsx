@@ -42,13 +42,14 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
                 {EXPLORE_COPY.PAGE_DESCRIPTION1}
               </p>
               <p>
-                A burden represents one of 8 broad environmental and economic
-                categories of climate change, energy, health, housing, legacy
-                pollution, transportation, water and wastewater, and workforce
-                development. Each burden category has between 2-5 associated
-                indicators. More detailed information about the burdens and
-                indicators can be found by clicking on a census tract, or
-                navigating to the{' '}
+                 The original identification of disadvantaged communities has been
+                 expanded to include two new approaches: <strong>cumulative</strong> and
+                {' '}<strong>hot spot</strong>. The cumulative approach shows the total
+                 number of exceeded thresholds for burdens and indicators. The hot spot
+                  approach visualizes clusters of unusally high or low exceeded
+                  thresholds as hot or cold spots. The legacy layer shows the original
+                  CEJST tool. More detailed information about the layers, burdens, and
+                   indicators can be found by navigating to the{' '}
                 <a className="usa-link" href='https://apps.bren.ucsb.edu/justice40/en/methodology/'>
                   methodology.
                 </a>{' '}
