@@ -347,10 +347,6 @@
     "defaultMessage": "Welcome to the CEJST+ tool. This tool is a reimagining of the <link1>Climate and Economic Justice Screening Tool</link1> created as part of the <link2>Justice 40 initiative</link2> in 2021. The original identification of disadvantaged communities has been expanded to include two new approaches: <bold>cumulative</bold> and <bold>hot spot</bold>. The cumulative approach shows total exceeded threshold counts for burdens and indicators. The hot spot approach visualizes clusters of unusally high or low thresholds exceeded as hot or cold spots. The legacy layer shows the original CEJST tool. For more information on the new layers, please see the methodology tab.",
     "description": "On the explore the map page, the first description of the page"
   },
-  "explore.map.page.description.2": {
-    "defaultMessage": "More information, including demographics and thresholds exceeded, can be found by zooming in and selecting a census tract.",
-    "description": "On the explore the map page, the fifth description of the page"
-  },
   "explore.map.page.explore.data.box.body": {
     "defaultMessage": "Download the data with documentation and shapefile from the <link1>downloads</link1> page.",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
@@ -1568,7 +1564,7 @@
     "description": "Navigate to the Methodology page. This is the description text for asthma"
   },
   "methodology.page.category.card.title": {
-    "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag> if they are in census tracts that:",
+    "defaultMessage": "Communities exceed this burden threshold if:",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
   "methodology.page.category.census.tract.description.text": {

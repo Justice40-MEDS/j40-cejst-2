@@ -235,13 +235,7 @@ const InteractiveGraph = ({url}: Props) => {
   return (
     <div className={styles.intGraphFlexContainer}>
       <div className={styles.graphContainer}>
-        <label
-          style={{
-            display: 'inline-block',
-            marginRight: '0.8rem',
-            marginBottom: '0.5rem',
-          }}
-        >
+        <label className={styles.stateLabel}>
           State:{' '}
           <select
             value={selectedState}
@@ -271,13 +265,7 @@ const InteractiveGraph = ({url}: Props) => {
           </select>
         </label>
         <br></br>
-        <label
-          style={{
-            display: 'inline-block',
-            marginRight: '0.8rem',
-            marginBottom: '1rem',
-          }}
-        >
+        <label className={styles.burdenLabel}>
           Burden:{' '}
           <select
             value={selectedBurden}
@@ -292,7 +280,7 @@ const InteractiveGraph = ({url}: Props) => {
           </select>
         </label>
 
-        <label>
+        <label className={styles.indicatorLabel}>
           Indicator:{' '}
           <select
             value={selectedIndicator}

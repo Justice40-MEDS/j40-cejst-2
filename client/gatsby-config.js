@@ -10,7 +10,7 @@ dotenv.config();
 // Depending on the node environment, the app will then use
 // .env.production or .env.development for application
 // env variables.
-dotenv.config({path: `.env.${process.env.NODE_ENV}`});
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 console.log('PATH_PREFIX =', process.env.PATH_PREFIX);
 console.log('pathPrefix being used =', process.env.PATH_PREFIX || '/justice40');
 
@@ -89,7 +89,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        policy: [{userAgent: '*', allow: '/'}],
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     {

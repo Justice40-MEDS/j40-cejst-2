@@ -13,9 +13,6 @@ const HotspotGraph = ({url}: Props) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch the data
-    // const url =
-    //   'http://localhost:5001/data/data-pipeline/data_pipeline/data/score/geojson/ind_dem_long.json';
     console.log('Fetching data from:', url);
 
     fetch(url)
@@ -42,7 +39,7 @@ const HotspotGraph = ({url}: Props) => {
   }, []);
 
   const idLabel: { [key: string]: string } = {
-    0: 'No Cluster',
+    0: 'Not Significant',
     1: 'Hot Spot',
     2: 'Cold Spot',
   };

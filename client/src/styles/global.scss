@@ -113,6 +113,10 @@ p.flush {
   @include j40-element('lg', 2, 'bold', 0);
 }
 
+.j40-footer-ceq-font_med {
+  @include j40-element('md', 2, 'bold', 0);
+}
+
 #main-content .page-heading {
   align-items: flex-start !important;
 }

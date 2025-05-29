@@ -27,6 +27,7 @@
         // align-self: flex-end;
         flex: 0 0 auto; // Prevents shrinking/growing, stays its natural width
         margin-left: 1rem; 
+        position: static !important;
       }
 
       .geolocateBox > div {
@@ -86,6 +87,12 @@
 // width is less than desktop (1024px)
 .j40Map {
   @include at-media-max("desktop") {
-    height: 55vh;
+    height: 75vh;
+  }
+}
+
+@media (max-width: 479px) {
+  .geolocateBox > :first-child {
+    position: static !important;
   }
 }

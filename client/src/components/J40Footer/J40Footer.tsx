@@ -59,6 +59,7 @@ const J40Footer = () => {
   // Title text styles
   const titleStyle = {
     margin: 0,
+    fontSize: '1.2rem',
   };
 
   // Contribute section styles
