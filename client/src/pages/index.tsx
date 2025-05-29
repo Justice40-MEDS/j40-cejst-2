@@ -8,7 +8,7 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
-import {PAGES_ENDPOINTS} from '../data/constants';
+// import {PAGES_ENDPOINTS} from '../data/constants';
 
 interface IMapPageProps {
   location: Location;
@@ -49,7 +49,7 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
                 indicators. More detailed information about the burdens and
                 indicators can be found by clicking on a census tract, or
                 navigating to the{' '}
-                <a className="usa-link" href={PAGES_ENDPOINTS.METHODOLOGY}>
+                <a className="usa-link" href='https://apps.bren.ucsb.edu/justice40/en/methodology/'>
                   methodology.
                 </a>{' '}
                 page.

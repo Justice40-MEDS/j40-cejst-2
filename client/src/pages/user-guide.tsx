@@ -1,33 +1,33 @@
-import { Grid } from "@trussworks/react-uswds";
-import * as React from "react";
-import { useWindowSize } from "react-use";
-import { useIntl } from "gatsby-plugin-intl";
+import {Grid} from '@trussworks/react-uswds';
+import * as React from 'react';
+import {useWindowSize} from 'react-use';
+import {useIntl} from 'gatsby-plugin-intl';
 
-import J40MainGridContainer from "../components/J40MainGridContainer";
-import Layout from "../components/layout";
+import J40MainGridContainer from '../components/J40MainGridContainer';
+import Layout from '../components/layout';
 // import ReleaseUpdate from '../components/ReleaseUpdate';
-import SubPageNav from "../components/SubPageNav";
-import * as ABOUT_COPY from "../data/copy/about";
+import SubPageNav from '../components/SubPageNav';
+import * as ABOUT_COPY from '../data/copy/about';
 
-import { PAGES_ENDPOINTS, USWDS_BREAKPOINTS } from "../data/constants";
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 // import * as DOWNLOADS_COPY from '../data/copy/downloads';
 interface IDownloadsPageProps {
   location: Location;
 }
 
-const DownloadsPage = ({ location }: IDownloadsPageProps) => {
+const DownloadsPage = ({location}: IDownloadsPageProps) => {
   const intl = useIntl();
-  const { width } = useWindowSize();
+  const {width} = useWindowSize();
 
   return (
     <Layout location={location} title="User guide">
       <J40MainGridContainer>
-        <section className={"page-heading"}>
+        <section className={'page-heading'}>
           <h1>User Guide: CEJST+</h1>
         </section>
 
-        <Grid row gap className={"j40-mb5-mt3"}>
-          <Grid col={12} tablet={{ col: 8 }}>
+        <Grid row gap className={'j40-mb5-mt3'}>
+          <Grid col={12} tablet={{col: 8}}>
             {/* <h2 className={'j40-mt-0 j40-mb-3'}>User Manual: CEJST+</h2> */}
             <h2>1. Introduction</h2>
             <p>
@@ -126,7 +126,7 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
                 <ul>
                   <li>
                     <p>
-                      <strong>Burden Thresholds Exceeded (default):</strong>{" "}
+                      <strong>Burden Thresholds Exceeded (default):</strong>{' '}
                       Displays total burden counts (0-8) that a census tract
                       exceeds.
                     </p>
@@ -257,7 +257,7 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
                 <p>
                   <strong>
                     Demographic Comparison of Thresholds Exceeded:
-                  </strong>{" "}
+                  </strong>{' '}
                   Charts comparing demographic profiles across burden/indicator
                   thresholds exceeded levels.
                 </p>
@@ -274,7 +274,7 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
                   <strong>
                     Interactive National Percentile for Burdens/Indicators
                     Distribution:
-                  </strong>{" "}
+                  </strong>{' '}
                   Interactive chart exploring the distribution of
                   burden/indicator national percentiles at the state and county
                   levels.
@@ -311,10 +311,10 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
               </li>
               <li>
                 <p>
-                  Notice a bug? Use the contact information in the{" "}
-                  <a className="usa-link" href={PAGES_ENDPOINTS.CONTACT}>
+                  Notice a bug? Use the contact information in the{' '}
+                  <a className="usa-link" href='https://apps.bren.ucsb.edu/justice40/en/contact/'>
                     contact page
-                  </a>{" "}
+                  </a>{' '}
                   to reach out.
                 </p>
               </li>
@@ -322,13 +322,13 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
           </Grid>
 
           {/* Second column */}
-          <Grid col={12} tablet={{ col: 1 }}>
+          <Grid col={12} tablet={{col: 1}}>
             {/* Spacer column */}
           </Grid>
 
           {/* Third column - Only show the SubPagNav component on desktop width */}
           {width > USWDS_BREAKPOINTS.DESKTOP ? (
-            <Grid col={12} tablet={{ col: 3 }}>
+            <Grid col={12} tablet={{col: 3}}>
               <SubPageNav
                 activeSubPageIndex={1}
                 endPoints={[
@@ -340,7 +340,7 @@ const DownloadsPage = ({ location }: IDownloadsPageProps) => {
               />
             </Grid>
           ) : (
-            ""
+            ''
           )}
         </Grid>
       </J40MainGridContainer>

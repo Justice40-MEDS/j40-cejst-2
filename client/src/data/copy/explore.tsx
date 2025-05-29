@@ -40,7 +40,7 @@ export const PAGE_DESCRIPTION1 = (
   <FormattedMessage
     id={'explore.map.page.description.1'}
     defaultMessage={`
-    Welcome to the CEJST+ tool. This tool is a reimagining of the <link1>Climate and Economic Justice Screening Tool</link1> created as part of the <link2>Justice 40 initiative</link2> in 2021. The original identification of disadvantaged communities has been expanded to include two new approaches: <bold>cumulative</bold> and <bold>hot spot</bold>. The cumulative approach shows total exceeded threshold counts for burdens and indicators. The hot spot approach visualizes clusters of unusally high or low thresholds exceeded as hot or cold spots. The legacy layer shows the original CEJST tool. For more information on the new layers, please see the methodology tab. 
+    Welcome to the CEJST+ tool. This tool is a reimagining of the <link1>Climate and Economic Justice Screening Tool</link1> created as part of the <link2>Justice40 initiative</link2> in 2021. The original identification of disadvantaged communities has been expanded to include two new approaches: <bold>cumulative</bold> and <bold>hot spot</bold>. The cumulative approach shows total exceeded threshold counts for burdens and indicators. The hot spot approach visualizes clusters of unusally high or low thresholds exceeded as hot or cold spots. The legacy layer shows the original CEJST tool.
   `}
     description={
       'On the explore the map page, the first description of the page'

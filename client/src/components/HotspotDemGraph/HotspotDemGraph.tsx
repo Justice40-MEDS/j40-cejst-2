@@ -74,9 +74,9 @@ const HotspotDemGraph = ({url, threshold, chartContainer}: Props) => {
   const clusterOrder = [
     'Very\nCold Spot',
     'Cold Spot',
-    'Very\nHot Spot',
-    'Hot Spot',
     'Not\nSignificant',
+    'Hot Spot',
+    'Very\nHot Spot',
   ];
 
   const colorPalette = [
