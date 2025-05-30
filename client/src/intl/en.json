@@ -344,7 +344,7 @@
     "description": "Navigate to the Downloads page, this will be the view of change log"
   },
   "explore.map.page.description.1": {
-    "defaultMessage": "Welcome to the CEJST+ tool. This tool is a reimagining of the <link1>Climate and Economic Justice Screening Tool</link1> created as part of the <link2>Justice 40 initiative</link2> in 2021. The original identification of disadvantaged communities has been expanded to include two new approaches: <bold>cumulative</bold> and <bold>hot spot</bold>. The cumulative approach shows total exceeded threshold counts for burdens and indicators. The hot spot approach visualizes clusters of unusally high or low thresholds exceeded as hot or cold spots. The legacy layer shows the original CEJST tool. For more information on the new layers, please see the methodology tab.",
+    "defaultMessage": "Welcome to the CEJST+ tool. This tool is a reimagining of the <link1>Climate and Economic Justice Screening Tool (CEJST)</link1> created as part of the <link2>Justice40 initiative</link2> in 2021. CEJST looks for disadvantaged communities by considering various environmental and economic burdens of census tracts. A burden represents one of 8 broad environmental and economic categories of climate change, energy, health, housing, legacy pollution, transportation, water and wastewater, and workforce development. Each burden category has between 2-5 associated indicators.",
     "description": "On the explore the map page, the first description of the page"
   },
   "explore.map.page.explore.data.box.body": {
